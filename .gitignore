@@ -1,0 +1,8 @@
+all
+
+*.d
+*.o
+.dep.*
+.depend.*
+.lock.*
+.target.*

@@ -1,0 +1,49 @@
+@startuml
+
+abstract class Node { /' (also ConcreteObserver) '/
+	+ update()
+}
+class Net { /' (also ConcreteSubject) '/
+	+ setLevel(SignalLevel level)
+}
+
+class Subject {
+	+ attach(Observer* observer)
+	+ detach(Observer* observer)
+	+ notify()
+}
+interface Observer {
+	+ update()
+}
+
+class GateAnd
+class GateNand
+class GateNor
+class GateNot
+class GateOr
+class GateXor
+class NodeOutput
+class NodeInput
+
+enum SignalLevel {
+  LOW
+	HIGH
+	UNDEFINED
+}
+
+Node <|-[dashed]-- GateAnd
+Node <|-[dashed]-- GateNand
+Node <|-[dashed]-- GateNor
+Node <|-[dashed]-- GateNot
+Node <|-[dashed]-- GateOr
+Node <|-[dashed]-- GateXor
+Node <|-[dashed]-- NodeOutput
+Node <|-[dashed]-- NodeInput
+
+Subject <|-- Net
+Observer <|-[dashed]- Node
+Node -> "owner" Net
+Observer "*" - Subject
+
+
+@enduml

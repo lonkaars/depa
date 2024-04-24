@@ -45,5 +45,11 @@ Observer <|-[dashed]- Node
 Node -> "owner" Net
 Observer "*" - Subject
 
+class Circuit {
+	+ loadFromFile()
+	+ run()
+}
+
+' only call notify when setLevel actually changes the level!!!!!!!
 
 @enduml

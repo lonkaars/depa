@@ -1,15 +1,23 @@
 @startuml
 
 abstract class Node { /' (also ConcreteObserver) '/
-	+ update()
+	+ label: string
+	+ type: string
+	+ addOutput(Net*)
+	+ addInput(Net*)
+	- inputs: Net*[]
+	- outputs: Net*[]
 }
 class Net { /' (also ConcreteSubject) '/
-	+ setLevel(SignalLevel level)
+	- level: SignalLevel
+	+ setLevel(SignalLevel)
+	' only call notify when setLevel actually changes the level!!!!!!!
 }
 
 class Subject {
-	+ attach(Observer* observer)
-	+ detach(Observer* observer)
+	- observers: Observer*[]
+	+ attach(Observer*)
+	+ detach(Observer*)
 	+ notify()
 }
 interface Observer {
@@ -45,11 +53,14 @@ Observer <|-[dashed]- Node
 Node -> "owner" Net
 Observer "*" - Subject
 
-class Circuit {
+class Parser {
 	+ loadFromFile()
-	+ run()
 }
 
-' only call notify when setLevel actually changes the level!!!!!!!
+class CircuitFactory {
+	+ run()
+	+ configure()
+}
+
 
 @enduml

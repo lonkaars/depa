@@ -1,4 +1,4 @@
-# design patters
+# design patterns
 
 ## Building
 

@@ -1,6 +1,12 @@
 # design patters
 
-List of applied design patters
+## Building
+
+```
+make
+```
+
+## Applied design patters
 
 - Observer
 - Factory

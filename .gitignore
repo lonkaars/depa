@@ -1,8 +1,2 @@
-all
-
-*.d
+main
 *.o
-.dep.*
-.depend.*
-.lock.*
-.target.*

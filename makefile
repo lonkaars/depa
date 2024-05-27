@@ -1,8 +1,8 @@
-# this makefile transparently forwards all `make` calls to `redo` for convenience
+main: main.o
 
-.PHONY: FORCE
+clean:
+	git clean -fxdi
 
-all: FORCE
-	@redo $(MAKECMDGOALS)
+compile_commands.json:
+	compiledb make -Bn
 
-$(MAKECMDGOALS): all

@@ -4,7 +4,7 @@
 
 enum SignalLevel {LOW, HIGH, UNDEFINED};
 
-class Net: Subject {
+class Net: public Subject {
    private:
       SignalLevel level = UNDEFINED;
    public:

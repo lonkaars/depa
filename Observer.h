@@ -17,6 +17,7 @@ class Subject {
 		// virtual void attach(Observer* obs) { observers.push_back(obs);}
 		virtual void attach(Observer* obs);
 		virtual void detach(Observer*);
+		virtual int size() { return this->observers.size(); }
 		
 		// TODO possibly add foo input as update value?
 		virtual void notify();

@@ -8,18 +8,25 @@
 
 
 class Gate: Observer {
-   private:
+   protected:
       std::string label;
       std::string type;
 
       std::vector<Net*> inputs;
-      std::vector<Net*> outputs;
+      Net* output;
 
    public:
       Gate(/* args */);
-      ~Gate();
+      virtual ~Gate();
+      void update();
       virtual void addInput(Net*);
-      virtual void addOutput(Net*);
+      virtual void setOutput(Net*);
+      virtual void compare() = 0;
 };
 
-class GateAnd
+class GateAnd: public Gate {
+   public:
+      GateAnd(){};
+      ~GateAnd(){};
+      void compare();
+};

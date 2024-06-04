@@ -22,14 +22,14 @@ int main(int argc, char** argv) {
 
 	try {
 		file >> main_parser;
-	} catch (exception e) {
+	} catch (ParserException & e) {
 		cout << "Parser error: " << e.what() << endl;
 		return EXIT_FAILURE;
 	}
 
 	// try {
 	//   circuit.run();
-	// } catch (exception e) {
+	// } catch (exception& e) {
 	//   cout << "Circuit error: " << e.what() << endl;
 	//   return EXIT_FAILURE;
 	// }

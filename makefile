@@ -3,10 +3,7 @@ LD = g++
 RM = rm -f
 CFLAGS = -g -std=c++17
 LFLAGS =
-TARGET = main \
-			Observer \
-			Node \
-			Net
+TARGET = main
 SRCS := $(wildcard *.cpp)
 OBJS := $(patsubst %.cpp,%.o, $(SRCS))
 

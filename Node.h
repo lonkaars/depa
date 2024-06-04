@@ -7,7 +7,7 @@
 
 
 
-class Gate: Observer {
+class Node: Observer {
    protected:
       std::string label;
       std::string type;
@@ -16,15 +16,15 @@ class Gate: Observer {
       Net* output;
 
    public:
-      Gate(/* args */);
-      virtual ~Gate();
+      Node(/* args */);
+      virtual ~Node();
       void update();
       virtual void addInput(Net*);
       virtual void setOutput(Net*);
       virtual void compare() = 0;
 };
 
-class GateAnd: public Gate {
+class GateAnd: public Node {
    public:
       GateAnd(){};
       ~GateAnd(){};

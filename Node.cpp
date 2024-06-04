@@ -1,22 +1,22 @@
-#include "Gate.h"
+#include "Node.h"
 
 #include <iostream>
 
-Gate::Gate(){}
-Gate::~Gate(){}
-void Gate::addInput(Net* net){
+Node::Node(){}
+Node::~Node(){}
+void Node::addInput(Net* net){
    net->attach(this);
 }
-void Gate::setOutput(Net* net){
+void Node::setOutput(Net* net){
    this->output = net;
 }
 
-void Gate::update(){
+void Node::update(){
    std::cout << "updated" << std::endl;
    this->compare();
 }
 
-/*/ Concrete Gates: /*/
+/*/ Concrete Nodes: /*/
 
 void GateAnd::compare(){
    SignalLevel new_out = HIGH;

@@ -6,26 +6,22 @@
 #include "Observer.h"
 #include "Net.h"
 
-class Node: Observer {
-protected:
-	std::string label;
-	std::string type;
+using std::string;
+using std::vector;
 
-	std::vector<Net*> inputs;
-	Net* output;
-
+class Node : Observer {
 public:
-	Node(/* args */);
-	virtual ~Node();
+	Node(const char * type);
+	virtual ~Node() = default;
 	void update();
-	virtual void addInput(Net*);
-	virtual void setOutput(Net*);
+	virtual void addInput(Net *);
+	virtual void setOutput(Net *);
 	virtual void compare() = 0;
+
+protected:
+	string label;
+
+	vector<Net *> inputs;
+	Net * output;
 };
 
-class GateAnd: public Node {
-public:
-	GateAnd(){};
-	~GateAnd(){};
-	void compare();
-};

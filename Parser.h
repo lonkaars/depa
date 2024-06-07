@@ -3,17 +3,17 @@
 #include <iostream>
 #include <istream>
 #include <exception>
-#include <vector>
+
+#include "Circuit.h"
 
 using std::istream;
 using std::string;
-using std::vector;
 
 class ParserException : public std::exception {
 public:
 	ParserException(const char * fmt, ...);
-	~ParserException();
-	const char * what();
+	virtual ~ParserException();
+	virtual const char * what();
 
 private:
 	char * error = NULL;
@@ -21,8 +21,11 @@ private:
 
 class Parser {
 public:
-	void parse(string input) const;
-	void parse(istream & input) const;
+	Parser() = default;
+	virtual ~Parser() = default;
+
+	void parse(string input);
+	void parse(istream & input);
 
 	/**
 	 * \brief preprocess (filter) line of input
@@ -31,10 +34,12 @@ public:
 	 */
 	static size_t filter(char * input);
 
-	void handle_line(string label, vector<string> nodes) const;
+	void set_circuit(Circuit & circuit);
 
 private:
-	friend istream & operator << (const Parser & parser, istream & s);
-	friend istream & operator >> (istream & s, const Parser & parser);
+	friend istream & operator << (Parser & parser, istream & s);
+	friend istream & operator >> (istream & s, Parser & parser);
+
+	Circuit * circuit;
 };
 

@@ -1,7 +1,7 @@
 CC = g++
 LD = g++
 RM = rm -f
-CFLAGS = -g -std=c++17
+CFLAGS = -g -std=c++20
 LFLAGS =
 TARGET = main
 SRCS := $(wildcard *.cpp)
@@ -18,5 +18,5 @@ $(TARGET): $(OBJS)
 clean:
 	$(RM) $(TARGET) $(OBJS)
 
-compile_commands: clean
+compile_commands.json:
 	compiledb make -Bn

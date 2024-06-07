@@ -52,7 +52,11 @@ size_t Parser::filter(char * input) {
 	return len - offset;
 }
 
-void Parser::parse(istream & input) const {
+void Parser::set_circuit(Circuit & circuit) {
+	this->circuit = &circuit;
+}
+
+void Parser::parse(istream & input) {
 	unsigned linenum = 0;
 	string line_str;
 	while (getline(input, line_str)) {
@@ -74,31 +78,23 @@ void Parser::parse(istream & input) const {
 			content = NULL;
 		}
 		
-		handle_line(label, nodes);
+		if (circuit == nullptr) throw ParserException("circuit is not initialized!");
+		circuit->create(label, nodes);
 	}
 }
 
-void Parser::handle_line(string label, vector<string> nodes) const {
-	if (nodes.size() == 1) {
-		printf("node or net ");
-	} else {
-		printf("net ");
-	}
 
-	printf("[%s]\n", label.c_str());
-}
-
-istream & operator >> (istream & s, const Parser & parser) {
+istream & operator >> (istream & s, Parser & parser) {
 	parser.parse(s);
 	return s;
 }
 
-istream & operator << (const Parser & parser, istream & s) {
+istream & operator << (Parser & parser, istream & s) {
 	parser.parse(s);
 	return s;
 }
 
-void Parser::parse(string input) const {
+void Parser::parse(string input) {
 	std::istringstream s(input);
 	parse(s);
 }

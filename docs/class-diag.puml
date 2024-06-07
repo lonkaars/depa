@@ -5,7 +5,7 @@ abstract class Node { /' (also ConcreteObserver) '/
 	+ addInput(Net*)
 	- inputs: Net*[]
 	- output: Net*
-	- type: static constexpr const string
+	- type: static const char * string
 	- minInputs: constexpr unsigned int
 	- maxInputs: constexpr int
 }

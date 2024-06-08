@@ -1,15 +1,8 @@
-#include <iostream>
-
 #include "GateAnd.h"
-
-using std::cout;
-using std::endl;
 
 GateAnd GateAnd::instance(GateAnd::type);
 
-GateAnd::GateAnd(const char * type) : Node(type) {
-	cout << __PRETTY_FUNCTION__ << endl;
-}
+GateAnd::GateAnd(const char * type) : Node(type) { }
 
 // Concrete Nodes:
 void GateAnd::compare() {
@@ -37,3 +30,10 @@ void GateAnd::compare() {
 //    this->output->setLevel(new_out);
 // }
 }
+
+GateAnd::GateAnd(const GateAnd * prototype) : Node() { }
+
+GateAnd * GateAnd::clone() const {
+	return new GateAnd(this);
+}
+

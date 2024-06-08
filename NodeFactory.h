@@ -1,10 +1,13 @@
 #pragma once
 
 #include <string>
+#include <map>
 
 #include "Node.h"
 
 using std::string;
+
+using NodeFactoryMap = std::map<string, const Node *>;
 
 class NodeFactory {
 public:
@@ -14,6 +17,10 @@ public:
 public:
 	static bool has_type(const char * type);
 	static bool has_type(string type);
+
+private:
+	static void assign(const char * type, const Node * node);
+	static NodeFactoryMap & get_map();
 
 private:
 	friend Node;

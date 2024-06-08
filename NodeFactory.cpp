@@ -11,14 +11,24 @@ bool NodeFactory::has_type(const char * type) {
 bool NodeFactory::has_type(string type) {
 	std::ranges::transform(type, type.begin(), [] (unsigned char c) { return std::tolower(c); });
 
-	// TODO: query the map instead
-	if (type == "and") return true;
-	if (type == "not") return true;
-	if (type == "or") return true;
-	if (type == "input_high") return true;
-	if (type == "input_low") return true;
-	if (type == "probe") return true;
+	static NodeFactoryMap & map = get_map();
 
-	return false;
+	return map.find(type) != map.end();
+}
+
+void NodeFactory::assign(const char * _type, const Node * node) {
+	static NodeFactoryMap & map = get_map();
+	string type = _type;
+
+	std::ranges::transform(type, type.begin(), [] (unsigned char c) { return std::tolower(c); });
+
+	if (has_type(type)) return;
+
+	map[type] = node;
+}
+
+NodeFactoryMap & NodeFactory::get_map() {
+	static NodeFactoryMap map;
+	return map;
 }
 

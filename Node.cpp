@@ -1,9 +1,10 @@
 #include "Node.h"
+#include "NodeFactory.h"
 
 #include <iostream>
 
 Node::Node(const char * type) {
-
+	NodeFactory::assign(type, this);
 }
 
 void Node::addInput(Net* net) {

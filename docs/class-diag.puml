@@ -1,31 +1,49 @@
 @startuml
 
-abstract class Node { /' (also ConcreteObserver) '/
-	+ setOutput(Net*)
-	+ addInput(Net*)
-	- inputs: Net*[]
-	- output: Net*
-	- type: static const char * string
-	- minInputs: constexpr unsigned int
-	- maxInputs: constexpr int
+skinparam linetype ortho
+
+class Node <<Template>> { /' (also ConcreteObserver) '/
+	+Node()
+	#Node(const char* type)
+	+~Node()
+	#output : Net*
+	+{abstract} clone() : Node* {query}
+	#label : string
+	#inputs : vector<Net*>
+	+addInput(Net*) : void
+	+{abstract} compare() : void
+	+setOutput(Net*) : void
+	+update() : void
+
 }
 class Net { /' (also ConcreteSubject) '/
-	- level: SignalLevel
-	+ setLevel(SignalLevel)
-	' only call notify when setLevel actually changes the level!!!!!!!
+	+Net()
+	+~Net()
+	-level : SignalLevel
+	+getLevel() : int
+	+setLevel(SignalLevel) : void
 }
 
 class Subject {
-	- observers: Observer*[]
-	+ attach(Observer*)
-	+ detach(Observer*)
-	+ notify()
+	+size() : int
+	-observers : std::vector<Observer*>
+	+attach(Observer* obs) : void
+	+detach(Observer*) : void
+	+notify() : void
 }
 interface Observer {
-	+ update()
+	+update() : void
 }
 
-class GateAnd
+class GateAnd {
+	-GateAnd(const char* type)
+	+GateAnd(const GateAnd* prototype)
+	+~GateAnd()
+	+clone() : GateAnd* {query}
+	-{static} type : constexpr static const char*
+	-{static} instance : static GateAnd
+	+compare() : void
+}
 class GateNand
 class GateNor
 class GateNot
@@ -39,6 +57,8 @@ enum SignalLevel {
 	HIGH
 	UNDEFINED
 }
+Net -- SignalLevel
+Node -- SignalLevel
 
 Node <|-[dashed]-- GateAnd
 Node <|-[dashed]-- GateNand
@@ -49,30 +69,66 @@ Node <|-[dashed]-- GateXor
 Node <|-[dashed]-- NodeOutput
 Node <|-[dashed]-- NodeInput
 
+class NodeInputLow
+class NodeInputHigh
+NodeInput <|-- NodeInputLow
+NodeInput <|-- NodeInputHigh
+
 Subject <|-- Net
 Observer <|-[dashed]- Node
 Node -> "owner" Net
 Observer "*" - Subject
 
-class Parser {
-	+ loadFromFile()
+class ParserException {
+	+ParserException(const char* fmt, ...)
+	+~ParserException()
+	-error : char*
+	+what() : char*
 }
 
-class CircuitFactory {
-	+ run()
-	+ configure()
+class Parser {
+	+Parser()
+	+~Parser()
+	-circuit : Circuit*
+	-operator<<(Parser& parser, istream s) : istream&
+	-operator>>(istream s, Parser& parser) : istream&
+	+{static} filter(char* input) : size_t
+	+parse(string input) : void
+	+parse(istream input) : void
+	+set_circuit(Circuit& circuit) : void
+}
+ParserException - Parser
+
+class NodeFactory {
+	+NodeFactory()
+	+~NodeFactory()
+	+{static} create(string type) : Node*
+	-{static} find_type(string type) : Node*
+	-{static} get_map() : NodeFactoryMap&
+	+{static} has_type(const char* type) : bool
+	+{static} has_type(string type) : bool
+	-{static} normalize_type(string type) : string
+	-{static} assign(const char* type, const Node* node) : void
 }
 
 class Circuit {
-	+ createNode(string type, string label)
-	+ createLink(string labelA, string labelB)
-
-	- nets: vector<Net*>
-	- nodes: Map<string label, Node*>
+	+Circuit()
+	+~Circuit()
+	-find_node(string label) : Node*
+	-nodes : std::map<string, Node*>
+	-nets : vector<Net*>
+	+create(string label, vector<string> nodes) : void
+	+new_net(string src, vector<string> dests) : void
+	+new_node(string label, string type) : void
 }
 
-CircuitFactory -[dashed]> Node
-CircuitFactory <-[dashed]- Node
+Circuit ---> Net
+Circuit ---> Node
+
+Parser -[dashed]> Circuit
+
+NodeFactory -[dashed]> Node
+NodeFactory <-[dashed]- Node
 
 
 @enduml

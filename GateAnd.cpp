@@ -9,7 +9,7 @@ SignalLevel GateAnd::level() {
 	if (this->inputs.size() < 1) throw CircuitException("AndGate input size error");
 
 	for (int i = 0; i < this->inputs.size(); i++){
-		SignalLevel l this->inputs[i]->getLevel();
+		SignalLevel l = this->inputs[i]->getLevel();
 
 		if (l == UNDEFINED) return UNDEFINED;
 		if (l == LOW) return LOW;

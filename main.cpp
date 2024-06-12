@@ -15,16 +15,20 @@ int main() {
 	// Observer ob();
 	Net n, n1, o;
 	Node *g = new GateAnd;
-	g->addInput(&n);
-	g->addInput(&n1);
-	g->setOutput(&o);
+	try {
+		g->addInput(&n);
+		g->addInput(&n1);
+		g->setOutput(&o);
 
-	// o.setLevel(UNDEFINED);
-	n.setLevel(LOW);
-	n1.setLevel(LOW);
-	int level = 22;
-	level = o.getLevel();
-	printf("hello world! %d\n", level);
+		// o.setLevel(UNDEFINED);
+		n.setLevel(HIGH);
+		n1.setLevel(HIGH);
+		int level = 22;
+		level = o.getLevel();
+		printf("hello world! %d\n", level);
+	} catch(Exception& e) {
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }
 

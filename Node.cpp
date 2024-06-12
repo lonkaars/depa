@@ -10,6 +10,7 @@ Node::Node(const char * type) {
 
 void Node::addInput(Net * net) {
 	net->attach(this);
+	inputs.push_back(net);
 }
 
 void Node::setOutput(Net * net){

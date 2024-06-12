@@ -5,7 +5,6 @@
 
 using std::getline;
 
-
 size_t Parser::filter(char * input) {
 	size_t
 		len = strlen(input),
@@ -64,11 +63,10 @@ void Parser::parse(istream & input) {
 		try {
 			circuit->create(label, nodes);
 		} catch(CircuitException & c) {
-			throw ParserException("Circuit error on line %u: %s", linenum, c.what());
+			throw ParserException("line %u: %s", linenum, c.what());
 		}
 	}
 }
-
 
 istream & operator >> (istream & s, Parser & parser) {
 	parser.parse(s);

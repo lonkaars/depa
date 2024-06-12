@@ -16,11 +16,10 @@ void Circuit::new_node(string label, string type) {
 
 	nodes[label] = node;
 
-	printf("[%s] (%s)\n", label.c_str(), type.c_str());
+	// printf("[%s] (%s)\n", label.c_str(), type.c_str());
 }
 
 void Circuit::new_net(string src, vector<string> dests) {
-	printf("%s\n", src.c_str());
 	Net * net = new Net();
 	nets.push_back(net);
 

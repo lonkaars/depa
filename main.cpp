@@ -22,9 +22,6 @@ int main(int argc, char** argv) {
 	} catch (ParserException & e) {
 		cout << "Parser error: " << e.what() << endl;
 		return EXIT_FAILURE;
-	} catch (CircuitException & e) {
-	  cout << "Circuit error: " << e.what() << endl;
-	  return EXIT_FAILURE;
 	}
 
 	try {

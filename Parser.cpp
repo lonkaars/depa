@@ -60,7 +60,12 @@ void Parser::parse(istream & input) {
 		}
 		
 		if (circuit == nullptr) throw ParserException("circuit is not initialized!");
-		circuit->create(label, nodes);
+	
+		try {
+			circuit->create(label, nodes);
+		} catch(CircuitException & c) {
+			throw ParserException("Circuit error on line %u: %s", linenum, c.what());
+		}
 	}
 }
 

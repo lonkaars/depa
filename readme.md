@@ -17,6 +17,22 @@ make
 
 ## TODO
 
+Functions:
+
+- [ ] loop detection (JOSHUA)
+- [ ] final output format (LOEK)
+
+Schoonheid:
+
+- [ ] worden members van klassen in hun declaratie 'overschreven' (dit kan
+  niet, moet in een constructor o.i.d. gedaan worden)
+- [ ] is de scope (public/private/protected) van alle members lekker
+  consistent?
+- [ ] stomme doxygen (`//! <korte beschrijving>` boven functies/variabelen,
+  `//!< wat doet dit` bij enum constantes)
+
+Classes:
+
 - [x] class Node
 - [x] class CircuitFactory
 - [x] class GateAnd

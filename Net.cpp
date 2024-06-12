@@ -4,6 +4,7 @@
 #include "prut.h"
 
 void Net::setLevel(SignalLevel level){
+	// if (this->level == level) return;
 	this->level = level;
 	this->notify();
 }

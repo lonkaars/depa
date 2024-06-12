@@ -5,7 +5,6 @@
 class GateAnd : public Node {
 public:
 	GateAnd() = default;
-	GateAnd(const GateAnd * prototype);
 	~GateAnd() = default;
 	virtual GateAnd * clone() const;
 
@@ -17,6 +16,7 @@ protected:
 	using Node::Node;
 
 private:
+	GateAnd(const GateAnd * prototype);
 	constexpr static const char * type = "and";
 	static GateAnd instance;
 };

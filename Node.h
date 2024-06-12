@@ -31,7 +31,7 @@ protected:
 	vector<Net *> inputs;
 	Net * output = nullptr;
 
-private:
+protected:
 	int min_inputs = -1;
 	int max_inputs = -1;
 };

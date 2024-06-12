@@ -43,9 +43,8 @@ void Circuit::new_net(string src, vector<string> dests) {
 }
 
 void Circuit::sim() {
-	for (auto & node : nodes) {
+	for (auto & node : nodes)
 		node.second->sim();
-	}
 }
 
 Node * Circuit::find_node(string label) {

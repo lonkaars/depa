@@ -1,24 +1,24 @@
 #include "NodeInput.h"
 #include "prut.h"
 
-
-NodeInput NodeInput::instance(NodeInput::type);
 NodeInputLow NodeInputLow::instance(NodeInputLow::type);
 NodeInputHigh NodeInputHigh::instance(NodeInputHigh::type);
 
-NodeInput::NodeInput(const NodeInput * prototype) : Node() { }
-
-NodeInput * NodeInput::clone() const {
-	return new NodeInput(this);
+NodeInput::NodeInput() {
+	this->max_inputs = -1;
+	this->max_inputs = 0;
 }
 
-SignalLevel NodeInput::level() {
-	prutprint("BaseInput");
-	return UNDEFINED;
+NodeInputLow * NodeInputLow::clone() const {
+	return new NodeInputLow(this);
 }
 SignalLevel NodeInputLow::level() {
 	prutprint("LOW");
 	return LOW;
+}
+
+NodeInputHigh * NodeInputHigh::clone() const {
+	return new NodeInputHigh(this);
 }
 SignalLevel NodeInputHigh::level() {
 	prutprint("HIGH");

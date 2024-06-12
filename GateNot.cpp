@@ -1,8 +1,8 @@
-#include "GateOr.h"
+#include "GateNot.h"
 
-GateOr GateOr::instance(GateOr::type);
+GateNot GateNot::instance(GateNot::type);
 
-SignalLevel GateOr::level() {
+SignalLevel GateNot::level() {
 	SignalLevel new_level = LOW;
 	for (int i = 0; i < this->inputs.size(); i++){
 		SignalLevel l = this->inputs[i]->getLevel();
@@ -13,8 +13,8 @@ SignalLevel GateOr::level() {
 	return new_level;
 }
 
-GateOr::GateOr(const GateOr * prototype) : Node() { }
+GateNot::GateNot(const GateNot * prototype) : Node() { }
 
-GateOr * GateOr::clone() const {
-	return new GateOr(this);
+GateNot * GateNot::clone() const {
+	return new GateNot(this);
 }

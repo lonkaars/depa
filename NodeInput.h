@@ -11,8 +11,10 @@ public:
 
 	virtual NodeInput * clone() const;
 
-protected:
-	virtual SignalLevel level();
+private:
+	NodeInput(const char * type);
+
+	SignalLevel input = UNDEFINED;
 };
 
 class NodeInputLow : public NodeInput {

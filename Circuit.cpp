@@ -1,4 +1,5 @@
 #include "Circuit.h"
+#include "Exception.h"
 #include "NodeFactory.h"
 
 void Circuit::create(string label, vector<string> nodes) {
@@ -9,29 +10,33 @@ void Circuit::create(string label, vector<string> nodes) {
 }
 
 void Circuit::new_node(string label, string type) {
-	if (nodes.find(label) != nodes.end()) return; // TODO: exception!
+	if (nodes.find(label) != nodes.end())
+		throw CircuitException("node with label \"%s\" already exists!", label.c_str());
 
 	Node * node = NodeFactory::create(type);
-	if (node == nullptr) return; // TODO: exception?
+	if (node == nullptr)
+		throw CircuitException("unknown type \"%s\"", type.c_str());
 
 	nodes[label] = node;
 
-	// printf("[%s] (%s)\n", label.c_str(), type.c_str());
+	printf("[%s] (%s)\n", label.c_str(), type.c_str());
 }
 
 void Circuit::new_net(string src, vector<string> dests) {
 	Net * net = new Net();
 	nets.push_back(net);
 
+	Node * node = find_node(src);
+	if (node == nullptr)
+		throw CircuitException("unknown source node \"%s\"", src.c_str());
+	node->setOutput(net);
+
 	for (auto dest : dests) {
 		Node * node = find_node(dest);
-		if (node == nullptr) continue; // TODO: exception!
+		if (node == nullptr)
+			throw CircuitException("unknown destination node \"%s\"", dest.c_str());
 		node->addInput(net);
 	}
-
-	Node * node = find_node(src);
-	if (node == nullptr) return; // TODO: exception!
-	node->setOutput(net);
 }
 
 void Circuit::sim() {

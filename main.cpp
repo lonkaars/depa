@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 
 	main_parser.set_circuit(circuit);
 
-	ifstream file("circuits/full-adder.txt");
+	ifstream file("circuits/and-test.txt");
 
 	try {
 		file >> main_parser;
@@ -22,11 +22,14 @@ int main(int argc, char** argv) {
 	} catch (ParserException & e) {
 		cout << "Parser error: " << e.what() << endl;
 		return EXIT_FAILURE;
+	} catch (CircuitException & e) {
+	  cout << "Circuit error: " << e.what() << endl;
+	  return EXIT_FAILURE;
 	}
 
 	try {
 	  circuit.sim();
-	} catch (CircuitException& e) {
+	} catch (CircuitException & e) {
 	  cout << "Circuit error: " << e.what() << endl;
 	  return EXIT_FAILURE;
 	}

@@ -24,12 +24,12 @@ int main(int argc, char** argv) {
 		return EXIT_FAILURE;
 	}
 
-	// try {
-	//   circuit.run();
-	// } catch (exception& e) {
-	//   cout << "Circuit error: " << e.what() << endl;
-	//   return EXIT_FAILURE;
-	// }
+	try {
+	  circuit.sim();
+	} catch (CircuitException& e) {
+	  cout << "Circuit error: " << e.what() << endl;
+	  return EXIT_FAILURE;
+	}
 
 	// cout << "Circuit output: " << circuit.getOutput() << endl;
 

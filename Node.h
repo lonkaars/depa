@@ -1,32 +1,32 @@
 #pragma once
+
 #include <string>
 #include <vector>
 
 #include "Observer.h"
 #include "Net.h"
 
+using std::string;
+using std::vector;
 
+class Node : Observer {
+public:
+	Node() = default;
+	virtual ~Node() = default;
+	virtual Node * clone() const = 0;
 
-class Node: Observer {
-   protected:
-      std::string label;
-      std::string type;
+public:
+	void update();
+	virtual void addInput(Net *);
+	virtual void setOutput(Net *);
+	virtual void compare() = 0;
 
-      std::vector<Net*> inputs;
-      Net* output;
+protected:
+	Node(const char * type);
 
-   public:
-      Node(/* args */);
-      virtual ~Node();
-      void update();
-      virtual void addInput(Net*);
-      virtual void setOutput(Net*);
-      virtual void compare() = 0;
+	string label;
+
+	vector<Net *> inputs;
+	Net * output;
 };
 
-class GateAnd: public Node {
-   public:
-      GateAnd(){};
-      ~GateAnd(){};
-      void compare();
-};

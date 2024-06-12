@@ -9,7 +9,11 @@ make
 ## Applied design patters
 
 - Observer
-- Factory
+- Low binding factory
+- Prototype
+- Strategy
+- Dependency injection
+- vast meer!
 
 ## TODO
 

@@ -1,12 +1,13 @@
 @startuml
 
 abstract class Node { /' (also ConcreteObserver) '/
-	+ label: string
-	+ type: string
-	+ addOutput(Net*)
+	+ setOutput(Net*)
 	+ addInput(Net*)
 	- inputs: Net*[]
-	- outputs: Net*[]
+	- output: Net*
+	- type: static const char * string
+	- minInputs: constexpr unsigned int
+	- maxInputs: constexpr int
 }
 class Net { /' (also ConcreteSubject) '/
 	- level: SignalLevel
@@ -61,6 +62,17 @@ class CircuitFactory {
 	+ run()
 	+ configure()
 }
+
+class Circuit {
+	+ createNode(string type, string label)
+	+ createLink(string labelA, string labelB)
+
+	- nets: Map<string label, Net*>
+	- nodes: Map<string label, Node*>
+}
+
+CircuitFactory -[dashed]> Node
+CircuitFactory <-[dashed]- Node
 
 
 @enduml

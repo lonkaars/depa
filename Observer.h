@@ -1,32 +1,28 @@
 #pragma once
 #include <vector>
 
-
 class Observer {
-	private:
+private:
 
-	public:
-		virtual void update();
-		
+public:
+	virtual void update();
+
 };
 
 class Subject {
-	private:
-		std::vector<Observer*> observers;
-	public:
-		// virtual void attach(Observer* obs) { observers.push_back(obs);}
-		virtual void attach(Observer* obs);
-		virtual void detach(Observer*);
-		virtual int size() { return this->observers.size(); }
-		
-		// TODO possibly add foo input as update value?
-		virtual void notify();
-		// virtual void notify() {
-		// 	for (int i = 0; i < observers.size(); i++)
-		// 		observers.at(i)->update();
-		// }
+private:
+	std::vector<Observer*> observers;
+public:
+	// virtual void attach(Observer* obs) { observers.push_back(obs);}
+	virtual void attach(Observer* obs);
+	virtual void detach(Observer*);
+	virtual int size() { return this->observers.size(); }
+
+	// TODO possibly add foo input as update value?
+	virtual void notify();
+	// virtual void notify() {
+	// 	for (int i = 0; i < observers.size(); i++)
+	// 		observers.at(i)->update();
+	// }
 };
-
-
-
 

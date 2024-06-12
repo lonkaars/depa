@@ -17,19 +17,19 @@ make
 
 ## TODO
 
-- [ ] abstract class Node
-- [ ] class CircuitFactory
-- [ ] class GateAnd
-- [ ] class GateNand
-- [ ] class GateNor
+- [x] class Node
+- [x] class CircuitFactory
+- [x] class GateAnd
+- [x] class GateNand
+- [X] class GateNor
 - [ ] class GateNot
-- [ ] class GateOr
+- [x] class GateOr
 - [ ] class GateXor
-- [ ] class Net
+- [x] class Net
 - [ ] class NodeInput
 - [ ] class NodeOutput
-- [ ] class Parser
-- [ ] class Subject
-- [ ] enum SignalLevel
-- [ ] interface Observer
+- [x] class Parser
+- [x] class Subject
+- [x] enum SignalLevel
+- [x] interface Observer
 

@@ -29,7 +29,7 @@ protected:
 	string label;
 
 	vector<Net *> inputs;
-	Net * output;
+	Net * output = nullptr;
 
 private:
 	int min_inputs = -1;

@@ -16,7 +16,11 @@ void Node::addInput(Net * net) {
 }
 
 void Node::setOutput(Net * net){
-	this->output = net;
+	if (this->output == nullptr) {
+		this->output = net;
+	} else {
+		throw CircuitException("Net already assigned");
+	}
 }
 
 void Node::sim() {

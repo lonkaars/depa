@@ -8,6 +8,27 @@ using std::cout;
 using std::endl;
 using std::ifstream;
 
+#include "Node.h"
+#include "GateAnd.h"
+
+int main() {
+	// Observer ob();
+	Net n, n1, o;
+	Node *g = new GateAnd;
+	g->addInput(&n);
+	g->addInput(&n1);
+	g->setOutput(&o);
+
+	// o.setLevel(UNDEFINED);
+	n.setLevel(LOW);
+	n1.setLevel(LOW);
+	int level = 22;
+	level = o.getLevel();
+	printf("hello world! %d\n", level);
+	return 0;
+}
+
+/*
 int main(int argc, char** argv) {
 	Parser main_parser;
 	Circuit circuit;
@@ -36,3 +57,4 @@ int main(int argc, char** argv) {
 	return EXIT_SUCCESS;
 }
 
+*/

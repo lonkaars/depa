@@ -16,7 +16,8 @@ int main(int argc, char** argv) {
 
 	main_parser.set_circuit(circuit);
 
-	ifstream file("circuits/and-test.txt");
+	// ifstream file("circuits/and-test.txt");
+	ifstream file("circuits/full-adder.txt");
 
 	try {
 		file >> main_parser;
@@ -35,6 +36,7 @@ int main(int argc, char** argv) {
 	}
 
 	// cout << "Circuit output: " << circuit.getOutput() << endl;
+	// cout << circuit.result();
 
 	return EXIT_SUCCESS;
 }

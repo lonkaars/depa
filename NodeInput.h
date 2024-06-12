@@ -10,32 +10,35 @@ public:
 	~NodeInput() = default;
 
 protected:
-	NodeInput(const char * type) : Node(type) {}
+	using Node::Node;
 };
 
 class NodeInputLow : public NodeInput {
+public:
+	virtual NodeInputLow * clone() const;
+
 protected:
 	SignalLevel level();
-	NodeInputLow(const char * type) : NodeInput(type) {}
-	NodeInputLow * clone() const;
+	using NodeInput::NodeInput;
+	// NodeInputLow(const char * type) : NodeInput(type) {}
 
 private:
 	NodeInputLow(const NodeInputLow *) : NodeInput() {}
-	using NodeInput::NodeInput;
 	constexpr static const char * type = "input_low";
 	static NodeInputLow instance;
 };
 
 class NodeInputHigh : public NodeInput {
+public:
+	virtual NodeInputHigh * clone() const;
+
 protected:
-	NodeInputHigh(const char * type) : NodeInput(type) {}
+	SignalLevel level();
+	using NodeInput::NodeInput;
+	// NodeInputHigh(const char * type) : NodeInput(type) {}
 
 private:
-	SignalLevel level();
 	NodeInputHigh(const NodeInputHigh *) : NodeInput() {}
-	NodeInputHigh * clone() const;
-
-	using NodeInput::NodeInput;
 	constexpr static const char * type = "input_high";
 	static NodeInputHigh instance;
 };

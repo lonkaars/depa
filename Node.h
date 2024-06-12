@@ -26,8 +26,6 @@ public:
 protected:
 	Node(const char * type);
 
-	string label;
-
 	vector<Net *> inputs;
 	Net * output = nullptr;
 

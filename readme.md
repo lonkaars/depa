@@ -11,6 +11,7 @@ make
 - Observer
 - Low binding factory
 - Prototype
+- Strategy
 - Dependency injection
 - vast meer!
 

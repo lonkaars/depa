@@ -11,7 +11,7 @@ void NodeOutput::sim() {
    if (this->inputs.size() == 0)
       throw CircuitException("No inputs on probe");
 
-   std::cout << this->inputs[0]->getLevel() << "foo" << std::endl;
+   std::cout << "Probe signal level: " << this->inputs[0]->getLevel() << std::endl;
 }
 
 NodeOutput::NodeOutput(const NodeOutput * prototype) : Node() { }

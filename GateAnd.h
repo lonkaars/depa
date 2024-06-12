@@ -7,7 +7,6 @@ public:
 	GateAnd() = default;
 	GateAnd(const GateAnd * prototype);
 	~GateAnd() = default;
-	virtual void sim();
 	virtual GateAnd * clone() const;
 
 private:

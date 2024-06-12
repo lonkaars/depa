@@ -8,11 +8,14 @@ public:
 	NodeInput(const NodeInput * prototype);
 	~NodeInput() = default;
 	virtual void sim();
+	SignalLevel level();
 	virtual NodeInput * clone() const;
 
 protected:
-	using Node::Node;
-	SignalLevel level = UNDEFINED;
+	NodeInput(const char * type);
+
+private:
+	SignalLevel input = UNDEFINED;
 };
 
 // Input LOW and HIGH unicorns:
@@ -30,7 +33,7 @@ private:
 	constexpr static const char * type = "input_low";
 	static NodeInputLow instance;
 
-	SignalLevel level = LOW;
+	SignalLevel input = LOW;
 };
 
 class NodeInputHigh : public NodeInput {
@@ -39,5 +42,5 @@ private:
 	constexpr static const char * type = "input_high";
 	static NodeInputHigh instance;
 
-	SignalLevel level = HIGH;
+	SignalLevel input = HIGH;
 };

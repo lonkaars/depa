@@ -7,6 +7,7 @@ public:
 	NodeOutput(const NodeOutput * prototype);
 	~NodeOutput() = default;
 	virtual void sim();
+	SignalLevel level() { return UNDEFINED; };
 	virtual NodeOutput * clone() const;
 
 private:

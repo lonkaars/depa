@@ -61,8 +61,8 @@ Net -- SignalLevel
 Node -- SignalLevel
 
 Node <|-[dashed]-- GateAnd
-Node <|-[dashed]-- GateNand
-Node <|-[dashed]-- GateNor
+GateAnd <|-- GateNand
+GateOr <|-- GateNor
 Node <|-[dashed]-- GateNot
 Node <|-[dashed]-- GateOr
 Node <|-[dashed]-- GateXor

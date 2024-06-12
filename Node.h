@@ -5,6 +5,7 @@
 
 #include "Observer.h"
 #include "Net.h"
+#include "Exception.h"
 
 using std::string;
 using std::vector;
@@ -19,7 +20,8 @@ public:
 	void update();
 	virtual void addInput(Net *);
 	virtual void setOutput(Net *);
-	virtual void sim() = 0;
+	virtual void sim();
+	virtual SignalLevel level() = 0;
 
 protected:
 	Node(const char * type);
@@ -28,5 +30,9 @@ protected:
 
 	vector<Net *> inputs;
 	Net * output;
+
+private:
+	int min_inputs = -1;
+	int max_inputs = -1;
 };
 

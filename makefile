@@ -20,3 +20,5 @@ clean:
 
 compile_commands.json:
 	compiledb make -Bn
+
+_Bj: ; $(MAKE) -C . -Bj

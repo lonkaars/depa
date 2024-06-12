@@ -2,6 +2,8 @@
 #include "Exception.h"
 #include "NodeFactory.h"
 
+#include "prut.h"
+
 void Circuit::create(string label, vector<string> nodes) {
 	if (nodes.size() == 1 && NodeFactory::has_type(nodes[0]))
 		return new_node(label, nodes[0]);
@@ -19,7 +21,7 @@ void Circuit::new_node(string label, string type) {
 
 	nodes[label] = node;
 
-	printf("[%s] (%s)\n", label.c_str(), type.c_str());
+	prutprintf("[%s] (%s)", label.c_str(), type.c_str());
 }
 
 void Circuit::new_net(string src, vector<string> dests) {
@@ -36,6 +38,7 @@ void Circuit::new_net(string src, vector<string> dests) {
 		if (node == nullptr)
 			throw CircuitException("unknown destination node \"%s\"", dest.c_str());
 		node->addInput(net);
+		prutprintf("%s -> %s", src.c_str(), dest.c_str());
 	}
 }
 

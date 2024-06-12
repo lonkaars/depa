@@ -35,7 +35,6 @@ void Node::sim() {
 }
 
 void Node::update(){
-	prutprint("updated");
 	this->sim();
 }
 

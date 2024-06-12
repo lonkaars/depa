@@ -4,6 +4,8 @@
 #include "Parser.h"
 #include "Circuit.h"
 
+#include "prut.h"
+
 using std::cout;
 using std::endl;
 using std::ifstream;
@@ -23,6 +25,7 @@ int main(int argc, char** argv) {
 		cout << "Parser error: " << e.what() << endl;
 		return EXIT_FAILURE;
 	}
+	prutprint("parsing done!");
 
 	try {
 	  circuit.sim();

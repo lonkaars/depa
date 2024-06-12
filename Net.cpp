@@ -5,10 +5,6 @@
 
 void Net::setLevel(SignalLevel level){
 	this->level = level;
-	// std::cout << this->size() << std::endl;
-	prutprintf("%u", this->size());
-	
-
 	this->notify();
 }
 

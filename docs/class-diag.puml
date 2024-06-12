@@ -67,7 +67,7 @@ class Circuit {
 	+ createNode(string type, string label)
 	+ createLink(string labelA, string labelB)
 
-	- nets: Map<string label, Net*>
+	- nets: vector<Net*>
 	- nodes: Map<string label, Node*>
 }
 

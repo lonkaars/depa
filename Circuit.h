@@ -18,10 +18,12 @@ public:
 public:
 	void create(string label, vector<string> nodes);
 	void new_node(string label, string type);
-	void new_net(string label, string node);
+	void new_net(string src, vector<string> dests);
 
 private:
 	std::map<string, Node *> nodes = {};
-	std::map<string, Net *> nets = {};
+	vector<Net *> nets = {};
+
+	virtual Node * find_node(string label);
 };
 

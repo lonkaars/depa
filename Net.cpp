@@ -1,10 +1,6 @@
 #include "Net.h"
 #include <iostream>
 
-Net::Net(){}
-
-Net::~Net(){}
-
 void Net::setLevel(SignalLevel level){
 	this->level = level;
 	std::cout << this->size() << std::endl;

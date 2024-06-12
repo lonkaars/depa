@@ -13,7 +13,7 @@ public:
 private:
 	SignalLevel level();
 
-	GateAnd(const char * type);
+	using Node::Node;
 	constexpr static const char * type = "and";
 	static GateAnd instance;
 };

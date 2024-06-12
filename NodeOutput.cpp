@@ -1,7 +1,7 @@
 #include "NodeOutput.h"
 #include "Exception.h"
 
-#include <iostream>
+#include "prut.h"
 
 NodeOutput NodeOutput::instance(NodeOutput::type);
 
@@ -11,7 +11,7 @@ void NodeOutput::sim() {
    if (this->inputs.size() == 0)
       throw CircuitException("No inputs on probe");
 
-   std::cout << this->inputs[0]->getLevel() << "foo" << std::endl;
+	 prutprintf("level: %u", this->inputs[0]->getLevel());
 }
 
 NodeOutput::NodeOutput(const NodeOutput * prototype) : Node() { }

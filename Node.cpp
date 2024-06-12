@@ -4,6 +4,8 @@
 #include "NodeFactory.h"
 #include "Net.h"
 
+#include "prut.h"
+
 Node::Node(const char * type) {
 	NodeFactory::assign(type, this);
 }
@@ -18,7 +20,7 @@ void Node::setOutput(Net * net){
 }
 
 void Node::update(){
-	std::cout << "updated" << std::endl;
+	prutprint("updated");
 	this->sim();
 }
 

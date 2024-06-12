@@ -3,8 +3,6 @@
 
 GateAnd GateAnd::instance(GateAnd::type);
 
-GateAnd::GateAnd(const char * type) : Node(type) { }
-
 SignalLevel GateAnd::level() {
 	if (this->inputs.size() < 1) throw CircuitException("AndGate input size error");
 

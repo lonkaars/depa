@@ -2,11 +2,8 @@
 #include <vector>
 
 class Observer {
-private:
-
 public:
-	virtual void update();
-
+	virtual void update() = 0;
 };
 
 class Subject {
@@ -18,11 +15,6 @@ public:
 	virtual void detach(Observer*);
 	virtual int size();
 
-	// TODO possibly add foo input as update value?
 	virtual void notify();
-	// virtual void notify() {
-	// 	for (int i = 0; i < observers.size(); i++)
-	// 		observers.at(i)->update();
-	// }
 };
 

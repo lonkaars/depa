@@ -2,12 +2,13 @@
 
 #include <iostream>
 
-NodeInput::NodeInput(const char * type) : Node(type) { }
+NodeInputLow NodeInputLow::instance(NodeInputLow::type);
+NodeInputHigh NodeInputHigh::instance(NodeInputHigh::type);
 
 void NodeInput::sim() {
-   if (this->output == nullptr) return;
-   std::cout << this->level << " bar\n";
-   this->output->setLevel(this->level);
+	if (this->output == nullptr) return;
+	// std::cout << this->level << " bar\n";
+	this->output->setLevel(this->level);
 }
 
 NodeInput::NodeInput(const NodeInput * prototype) : Node() { }
@@ -15,10 +16,6 @@ NodeInput::NodeInput(const NodeInput * prototype) : Node() { }
 NodeInput * NodeInput::clone() const {
 	return new NodeInput(this);
 }
-
-// INPUT_LOW
-NodeInputLow NodeInputLow::instance(NodeInputLow::type);
-NodeInputLow::NodeInputLow(const char * type) : NodeInput() { }
 
 // NodeInputLow::NodeInputLow(const NodeInputLow * prototype) : NodeInput() { }
 

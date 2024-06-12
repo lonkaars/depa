@@ -1,5 +1,6 @@
 main
 *.o
+*.d
 .vscode
 .cache
 compile_commands.json

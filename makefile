@@ -1,24 +1,25 @@
-CC = g++
-LD = g++
-RM = rm -f
-CFLAGS = -g -std=c++20
-LFLAGS =
+CXXFLAGS += -g
+CXXFLAGS += -std=c++20
 TARGET = main
+
 SRCS := $(wildcard *.cpp)
-OBJS := $(patsubst %.cpp,%.o, $(SRCS))
+OBJS := $(SRCS:.cpp=.o)
+DEPS := $(SRCS:.cpp=.d)
 
 all: $(TARGET)
 
-%.o: %.cpp
-	$(CC) -c $(CFLAGS) $< -o $@
+-include $(wildcard *.d)
+all: $(DEPS)
 
 $(TARGET): $(OBJS)
-	$(LD) $^ $(LFLAGS) -o $@
+	$(CXX) $^ $(LFLAGS) -o $@
+
+%.d: %.cpp
+	$(CXX) -M $< -o $@
 
 clean:
-	$(RM) $(TARGET) $(OBJS)
+	$(RM) $(TARGET) $(OBJS) $(DEPS)
 
 compile_commands.json:
 	compiledb make -Bn
 
-_Bj: ; $(MAKE) -C . -Bj

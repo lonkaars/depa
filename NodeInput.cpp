@@ -14,7 +14,7 @@ NodeInput * NodeInput::clone() const {
 
 SignalLevel NodeInput::level() {
 	prutprint("BaseInput");
-	return HIGH;
+	return UNDEFINED;
 }
 SignalLevel NodeInputLow::level() {
 	prutprint("LOW");

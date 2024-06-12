@@ -14,7 +14,7 @@ public:
 private:
 	NodeInput(const char * type);
 
-SignalLevel input = UNDEFINED;
+	SignalLevel input = UNDEFINED;
 };
 
 // Input LOW and HIGH unicorns:

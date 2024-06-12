@@ -5,8 +5,7 @@ void Circuit::create(string label, vector<string> nodes) {
 	if (nodes.size() == 1 && NodeFactory::has_type(nodes[0]))
 		return new_node(label, nodes[0]);
 
-	for (string node : nodes)
-		new_net(label, node);
+	new_net(label, nodes);
 }
 
 void Circuit::new_node(string label, string type) {
@@ -20,16 +19,26 @@ void Circuit::new_node(string label, string type) {
 	printf("[%s] (%s)\n", label.c_str(), type.c_str());
 }
 
-void Circuit::new_net(string label, string connection) {
-	// TODO: instance Net
-	// TODO: connect Net to connection
-	printf("[%s] -> %s\n", label.c_str(), connection.c_str());
+void Circuit::new_net(string src, vector<string> dests) {
+	printf("%s\n", src.c_str());
+	Net * net = new Net();
+	nets.push_back(net);
+
+	for (auto dest : dests) {
+		Node * node = nodes.find(dest)->second;
+		if (node == nullptr) continue; // TODO: exception!
+		node->addInput(net);
+	}
+
+	Node * node = nodes.find(src)->second;
+	if (node == nullptr) return; // TODO: exception!
+	node->setOutput(net);
 }
 
 Circuit::~Circuit() {
-	for (auto const & n : nodes)
+	for (auto & n : nodes)
 		delete n.second;
-	for (auto const & n : nets)
-		delete n.second;
+	for (auto & n : nets)
+		delete n;
 }
 

@@ -18,7 +18,7 @@ SignalLevel GateAnd::level() {
 }
 
 // Concrete Nodes:
-void GateAnd::compare() {
+void GateAnd::sim() {
 	SignalLevel new_out = this->level();
 
 	if (new_out == UNDEFINED) return;

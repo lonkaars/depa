@@ -1,17 +1,17 @@
-#include "Observer.h"
 #include <iostream>
+
+#include "Observer.h"
 
 void Observer::update(){
 	std::cout << 'a' << std::endl;
 }
 
-
-void Subject::attach(Observer* obs){
+void Subject::attach(Observer * obs){
 	std::cout << "added" << std::endl;
 	this->observers.push_back(obs);
 }
 
-void Subject::detach(Observer*){
+void Subject::detach(Observer *){
 
 }
 

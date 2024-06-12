@@ -1,0 +1,13 @@
+# full adder circuit
+# vim:ft=cfg
+A: INPUT_LOW;
+OUT: PROBE;
+# OUT: A;
+A: OUT;
+# B: INPUT_LOW;
+# OUT: PROBE;
+# TEST: AND;
+# A: TEST;
+# B: TEST;
+# OUT: TEST;
+

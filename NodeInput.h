@@ -7,7 +7,7 @@ public:
    NodeInput() = default;
 	NodeInput(const NodeInput * prototype);
 	~NodeInput() = default;
-	virtual void compare();
+	virtual void sim();
 	virtual NodeInput * clone() const;
 
 private:

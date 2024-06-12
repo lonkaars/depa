@@ -1,29 +1,9 @@
 #include <cstring>
 #include <sstream>
-#include <cstdarg>
 
 #include "Parser.h"
 
 using std::getline;
-
-ParserException::ParserException(const char * fmt, ...) {
-	va_list args;
-	va_start(args, fmt);
-	size_t sz = vsnprintf(NULL, 0, fmt, args) + 1;
-	if (error != NULL) free(error);
-	error = (char *) malloc(sz);
-	vsnprintf(error, sz, fmt, args);
-	va_end(args);
-}
-
-ParserException::~ParserException() {
-	if (error != NULL)
-		free(error);
-}
-
-const char * ParserException::what() {
-	return error;
-}
 
 size_t Parser::filter(char * input) {
 	size_t
@@ -79,10 +59,14 @@ void Parser::parse(istream & input) {
 		}
 		
 		if (circuit == nullptr) throw ParserException("circuit is not initialized!");
-		circuit->create(label, nodes);
+	
+		try {
+			circuit->create(label, nodes);
+		} catch(CircuitException & c) {
+			throw ParserException("line %u: %s", linenum, c.what());
+		}
 	}
 }
-
 
 istream & operator >> (istream & s, Parser & parser) {
 	parser.parse(s);

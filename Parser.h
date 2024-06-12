@@ -2,22 +2,15 @@
 
 #include <iostream>
 #include <istream>
-#include <exception>
+
 
 #include "Circuit.h"
+#include "Exception.h"
 
 using std::istream;
 using std::string;
 
-class ParserException : public std::exception {
-public:
-	ParserException(const char * fmt, ...);
-	virtual ~ParserException();
-	virtual const char * what();
 
-private:
-	char * error = NULL;
-};
 
 class Parser {
 public:

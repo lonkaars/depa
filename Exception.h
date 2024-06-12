@@ -12,5 +12,12 @@ private:
 	char * error = NULL;
 };
 
-class ParserException : public Exception { using Exception::Exception; };
-class CircuitException : public Exception { using Exception::Exception; };
+class ParserException : public Exception {
+public:
+	ParserException(const char * fmt, ...) : Exception(fmt) {}
+};
+
+class CircuitException : public Exception {
+public:
+	CircuitException(const char * fmt, ...) : Exception(fmt) {}
+};

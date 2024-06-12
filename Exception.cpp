@@ -2,6 +2,7 @@
 
 #include <cstdarg>
 #include <cstdio>
+#include <cstdlib>
 
 Exception::Exception(const char * fmt, ...) {
 	va_list args;

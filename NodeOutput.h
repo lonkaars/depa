@@ -6,7 +6,7 @@ class NodeOutput : public Node {
 public:
 	NodeOutput(const NodeOutput * prototype);
 	~NodeOutput() = default;
-	virtual void compare();
+	virtual void sim();
 	virtual NodeOutput * clone() const;
 
 private:

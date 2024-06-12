@@ -19,7 +19,7 @@ public:
 	void update();
 	virtual void addInput(Net *);
 	virtual void setOutput(Net *);
-	virtual void compare() = 0;
+	virtual void sim() = 0;
 	int gert = 45;
 
 protected:

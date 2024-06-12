@@ -1,10 +1,12 @@
 #include "NodeInput.h"
 
+#include <iostream>
+
 NodeInput::NodeInput(const char * type) : Node(type) { }
 
-void NodeInput::compare() {
+void NodeInput::sim() {
    if (this->output == nullptr) return;
-
+   std::cout << this->level << " bar\n";
    this->output->setLevel(this->level);
 }
 

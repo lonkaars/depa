@@ -4,7 +4,7 @@ GateAnd GateAnd::instance(GateAnd::type);
 
 GateAnd::GateAnd(const char * type) : Node(type) { }
 
-void GateAnd::compare() {
+void GateAnd::sim() {
 	SignalLevel new_out = HIGH;
 	// TODO: fix segfault somewhere below
 	for (int i = 0; i < this->inputs.size(); i++){

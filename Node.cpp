@@ -18,6 +18,6 @@ void Node::setOutput(Net * net){
 
 void Node::update(){
 	std::cout << "updated" << std::endl;
-	this->compare();
+	this->sim();
 }
 

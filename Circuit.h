@@ -16,9 +16,10 @@ public:
 	virtual ~Circuit();
 
 public:
-	void create(string label, vector<string> nodes);
-	void new_node(string label, string type);
-	void new_net(string src, vector<string> dests);
+	virtual void create(string label, vector<string> nodes);
+	virtual void new_node(string label, string type);
+	virtual void new_net(string src, vector<string> dests);
+	virtual void sim();
 
 private:
 	std::map<string, Node *> nodes = {};

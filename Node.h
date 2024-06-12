@@ -19,8 +19,7 @@ public:
 	void update();
 	virtual void addInput(Net *);
 	virtual void setOutput(Net *);
-	virtual void compare() = 0;
-	int gert = 45;
+	virtual void sim() = 0;
 
 protected:
 	Node(const char * type);

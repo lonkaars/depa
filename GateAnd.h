@@ -4,9 +4,10 @@
 
 class GateAnd : public Node {
 public:
+	GateAnd() = default;
 	GateAnd(const GateAnd * prototype);
-	virtual ~GateAnd() = default;
-	virtual void compare();
+	~GateAnd() = default;
+	virtual void sim();
 	virtual GateAnd * clone() const;
 
 private:

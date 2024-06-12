@@ -34,6 +34,12 @@ void Circuit::new_net(string src, vector<string> dests) {
 	node->setOutput(net);
 }
 
+void Circuit::sim() {
+	for (auto & node : nodes) {
+		node.second->sim();
+	}
+}
+
 Node * Circuit::find_node(string label) {
 	auto map_index = this->nodes.find(label);
 	if (map_index == nodes.end()) return nullptr;

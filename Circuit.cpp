@@ -25,14 +25,20 @@ void Circuit::new_net(string src, vector<string> dests) {
 	nets.push_back(net);
 
 	for (auto dest : dests) {
-		Node * node = nodes.find(dest)->second;
+		Node * node = find_node(dest);
 		if (node == nullptr) continue; // TODO: exception!
 		node->addInput(net);
 	}
 
-	Node * node = nodes.find(src)->second;
+	Node * node = find_node(src);
 	if (node == nullptr) return; // TODO: exception!
 	node->setOutput(net);
+}
+
+Node * Circuit::find_node(string label) {
+	auto map_index = this->nodes.find(label);
+	if (map_index == nodes.end()) return nullptr;
+	return map_index->second;
 }
 
 Circuit::~Circuit() {

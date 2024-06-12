@@ -23,5 +23,7 @@ public:
 private:
 	std::map<string, Node *> nodes = {};
 	vector<Net *> nets = {};
+
+	virtual Node * find_node(string label);
 };
 

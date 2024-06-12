@@ -20,6 +20,7 @@ public:
 	virtual void addInput(Net *);
 	virtual void setOutput(Net *);
 	virtual void compare() = 0;
+	int gert = 45;
 
 protected:
 	Node(const char * type);

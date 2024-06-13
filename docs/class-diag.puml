@@ -6,6 +6,7 @@ skinparam classAttributeIconSize 0
 
 class main {
 	+main(int argc, char** argv) : int
+	+open_input(int argc, char** argv) : istream*
 }
 hide main circle
 
@@ -169,6 +170,7 @@ exception ParserException {
 
 class Parser {
 	+Parser()
+	+Parser(Circuit& circuit)
 	+~Parser()
 	-circuit : Circuit*
 	-operator<<(Parser& parser, istream s) : istream&

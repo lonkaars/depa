@@ -83,3 +83,7 @@ void Parser::parse(string input) {
 	parse(s);
 }
 
+Parser::Parser(Circuit & circuit) {
+	set_circuit(circuit);
+}
+

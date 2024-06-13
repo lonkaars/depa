@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <istream>
 
 #include "Parser.h"
 #include "Circuit.h"
@@ -9,19 +10,30 @@
 using std::cout;
 using std::endl;
 using std::ifstream;
+using std::istream;
+
+istream * open_input(int argc, char** argv) {
+	if (argc > 1) {
+		ifstream * file = new ifstream(argv[1]);
+		if (!file->is_open()) return nullptr;
+		return file;
+	}
+
+	return &std::cin;
+}
 
 int main(int argc, char** argv) {
-	Parser main_parser;
+	istream * input = open_input(argc, argv);
+	if (input == nullptr) {
+		cout << "Could not open file" << endl;
+		return EXIT_FAILURE;
+	}
+
 	Circuit circuit;
-
-	main_parser.set_circuit(circuit);
-
-	// ifstream file("circuits/and-test.txt");
-	ifstream file("circuits/full-adder.txt");
+	Parser parser(circuit);
 
 	try {
-		file >> main_parser;
-		// main_parser << file;
+		*input >> parser;
 	} catch (ParserException & e) {
 		cout << "Parser error: " << e.what() << endl;
 		return EXIT_FAILURE;
@@ -35,9 +47,7 @@ int main(int argc, char** argv) {
 	  return EXIT_FAILURE;
 	}
 
-	// print results
 	cout << circuit.result();
-
 	return EXIT_SUCCESS;
 }
 

@@ -15,6 +15,7 @@ using std::string;
 class Parser {
 public:
 	Parser() = default;
+	Parser(Circuit & circuit);
 	virtual ~Parser() = default;
 
 	void parse(string input);

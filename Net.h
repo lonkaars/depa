@@ -1,12 +1,7 @@
 #pragma once
 
 #include "Observer.h"
-
-enum SignalLevel {
-	LOW,
-	HIGH,
-	UNDEFINED
-};
+#include "SignalLevel.h"
 
 class Net : public Subject {
 private:

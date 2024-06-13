@@ -2,7 +2,7 @@
 
 void NodeOutputVisitor::visit(Node & node) { }
 void NodeOutputVisitor::visit(NodeOutput & node) {
-	level = node.level(); // TODO: dit klopt niet
+	level = node.level();
 	output_node = true;
 }
 

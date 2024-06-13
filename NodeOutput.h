@@ -14,4 +14,8 @@ private:
 	NodeOutput(const char * type);
 	constexpr static const char * type = "probe";
 	static NodeOutput instance;
+
+public:
+	virtual void accept(NodeVisitor & visitor) { visitor.visit(*this); }
 };
+

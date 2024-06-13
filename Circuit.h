@@ -20,6 +20,7 @@ public:
 	virtual void new_node(string label, string type);
 	virtual void new_net(string src, vector<string> dests);
 	virtual void sim();
+	virtual string result();
 
 private:
 	std::map<string, Node *> nodes = {};

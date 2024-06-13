@@ -3,6 +3,7 @@
 #include "Node.h"
 #include "NodeFactory.h"
 #include "Net.h"
+#include "Exception.h"
 
 #include "prut.h"
 

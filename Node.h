@@ -5,7 +5,7 @@
 
 #include "Observer.h"
 #include "Net.h"
-#include "Exception.h"
+#include "NodeVisitor.h"
 
 using std::string;
 using std::vector;
@@ -32,5 +32,9 @@ protected:
 protected:
 	int min_inputs = -1;
 	int max_inputs = -1;
+
+public:
+	virtual void accept(NodeVisitor & visitor) { visitor.visit(*this); }
+	friend NodeVisitor;
 };
 

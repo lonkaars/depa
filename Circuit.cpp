@@ -1,8 +1,13 @@
+#include <format>
+
 #include "Circuit.h"
 #include "Exception.h"
 #include "NodeFactory.h"
 
+#include "NodeOutputVisitor.h"
 #include "prut.h"
+
+using std::format;
 
 void Circuit::create(string label, vector<string> nodes) {
 	if (nodes.size() == 1 && NodeFactory::has_type(nodes[0]))
@@ -58,5 +63,19 @@ Circuit::~Circuit() {
 		delete n.second;
 	for (auto & n : nets)
 		delete n;
+}
+
+string Circuit::result() {
+	string output;
+
+	for (auto & n : nodes) {
+		NodeOutputVisitor visitor;
+		n.second->accept(visitor);
+		if (!visitor.output_node) continue;
+
+		output += std::format("{}: {}\n", n.first, std::to_string(visitor.level));
+	}
+
+	return output;
 }
 

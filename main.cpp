@@ -35,8 +35,8 @@ int main(int argc, char** argv) {
 	  return EXIT_FAILURE;
 	}
 
-	// cout << "Circuit output: " << circuit.getOutput() << endl;
-	// cout << circuit.result();
+	// print results
+	cout << circuit.result();
 
 	return EXIT_SUCCESS;
 }

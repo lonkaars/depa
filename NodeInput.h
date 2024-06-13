@@ -20,7 +20,6 @@ public:
 protected:
 	SignalLevel level();
 	using NodeInput::NodeInput;
-	// NodeInputLow(const char * type) : NodeInput(type) {}
 
 private:
 	NodeInputLow(const NodeInputLow *) : NodeInput() {}
@@ -35,7 +34,6 @@ public:
 protected:
 	SignalLevel level();
 	using NodeInput::NodeInput;
-	// NodeInputHigh(const char * type) : NodeInput(type) {}
 
 private:
 	NodeInputHigh(const NodeInputHigh *) : NodeInput() {}

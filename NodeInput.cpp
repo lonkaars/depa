@@ -12,16 +12,10 @@ NodeInput::NodeInput() {
 NodeInputLow * NodeInputLow::clone() const {
 	return new NodeInputLow(this);
 }
-SignalLevel NodeInputLow::level() {
-	prutprint("LOW");
-	return LOW;
-}
+SignalLevel NodeInputLow::level() { return LOW; }
 
 NodeInputHigh * NodeInputHigh::clone() const {
 	return new NodeInputHigh(this);
 }
-SignalLevel NodeInputHigh::level() {
-	prutprint("HIGH");
-	return HIGH;
-}
+SignalLevel NodeInputHigh::level() { return HIGH; }
 

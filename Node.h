@@ -17,6 +17,7 @@ public:
 	virtual Node * clone() const = 0;
 
 public:
+	//! alias to \p sim() for Observer
 	void update();
 	virtual void addInput(Net *);
 	virtual void setOutput(Net *);

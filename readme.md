@@ -20,7 +20,7 @@ make
 Functions:
 
 - [ ] loop detection (JOSHUA)
-- [ ] final output format (LOEK)
+- [x] final output format (LOEK)
 
 Schoonheid:
 

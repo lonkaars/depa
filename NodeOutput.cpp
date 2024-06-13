@@ -1,21 +1,31 @@
 #include "NodeOutput.h"
 #include "Exception.h"
 
-#include "prut.h"
-
 NodeOutput NodeOutput::instance(NodeOutput::type);
 
-NodeOutput::NodeOutput(const char * type) : Node(type) { }
+NodeOutput::NodeOutput(const char * type) : Node(type) { init(); }
 
-void NodeOutput::sim() {
-   if (this->inputs.size() == 0)
-      throw CircuitException("No inputs on probe");
-
-	 prutprintf("level: %u", this->inputs[0]->getLevel());
+void NodeOutput::init() {
+	this->min_inputs = 1;
+	this->max_inputs = 1;
 }
 
-NodeOutput::NodeOutput(const NodeOutput * prototype) : Node() { }
+void NodeOutput::sim() {
+	Node::sim();
+	this->input = this->inputs[0]->getLevel();
+}
+
+NodeOutput::NodeOutput(const NodeOutput * prototype) : Node() { init(); }
 
 NodeOutput * NodeOutput::clone() const {
 	return new NodeOutput(this);
 }
+
+void NodeOutput::setOutput(Net *) {
+	throw CircuitException("NodeOutput cannot have an output");
+}
+
+SignalLevel NodeOutput::level() {
+	return this->input;
+}
+

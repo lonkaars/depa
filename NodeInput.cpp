@@ -5,7 +5,7 @@ NodeInputLow NodeInputLow::instance(NodeInputLow::type);
 NodeInputHigh NodeInputHigh::instance(NodeInputHigh::type);
 
 NodeInput::NodeInput() {
-	this->max_inputs = -1;
+	this->min_inputs = -1;
 	this->max_inputs = 0;
 }
 

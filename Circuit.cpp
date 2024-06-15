@@ -14,6 +14,7 @@ void Circuit::create(string label, vector<string> nodes) {
 		return new_node(label, nodes[0]);
 
 	new_net(label, nodes);
+	ld->add_connection(label, nodes);
 }
 
 void Circuit::new_node(string label, string type) {

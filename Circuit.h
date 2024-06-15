@@ -7,6 +7,8 @@
 #include "Node.h"
 #include "Net.h"
 
+#include "LoopDetection.h"
+
 using std::string;
 using std::vector;
 
@@ -25,6 +27,8 @@ public:
 private:
 	std::map<string, Node *> nodes = {};
 	vector<Net *> nets = {};
+
+	LoopDetection * ld = new LoopDetection();
 
 	virtual Node * find_node(string label);
 };

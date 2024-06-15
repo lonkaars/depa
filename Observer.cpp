@@ -1,18 +1,12 @@
-#include <iostream>
-
 #include "Observer.h"
 
-void Subject::attach(Observer * obs){
-	// std::cout << "added" << std::endl;
+void Subject::attach(Observer * obs) {
 	this->observers.push_back(obs);
 }
 
-void Subject::detach(Observer *){
-
-}
+void Subject::detach(Observer *) { }
 
 int Subject::size() {
-	// std::cout << "subject list size " << this->observers.size() << std::endl;
 	return this->observers.size();
 }
 

@@ -2,8 +2,6 @@
 
 #include "Node.h"
 
-#include "prut.h"
-
 class NodeInput : public Node {
 public:
 	NodeInput();

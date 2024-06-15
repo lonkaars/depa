@@ -1,30 +1,24 @@
-#include <iostream>
-#include <unordered_map>
-#include <unordered_set>
-#include <stack>
-
 #include "LoopDetection.h"
 #include "Exception.h"
 
 LoopDetection::~LoopDetection(){}
 
-void LoopDetection::add_connection(const std::string &src, const std::vector<std::string> &dests)
-{
+void LoopDetection::add_connection(const string &src, const vector<string> &dests) {
 	for (const auto &dest : dests) 
 		adj_list[src].push_back(dest);
 	
 	if (detect_cycle(src))
-		throw CircuitException( "Cycle detected starting from node: %s", src.c_str());
+		throw CircuitException("cycle detected starting from node: %s", src.c_str());
 }
 
-bool LoopDetection::detect_cycle(const std::string &start) {
-	std::unordered_set<std::string> visited;
-	std::unordered_set<std::string> rec_stack;
+bool LoopDetection::detect_cycle(const string &start) {
+	unordered_set<string> visited;
+	unordered_set<string> rec_stack;
 
 	return is_cyclic(start, visited, rec_stack);
 }
 
-bool LoopDetection::is_cyclic(const std::string &node, std::unordered_set<std::string> &visited, std::unordered_set<std::string> &rec_stack) {
+bool LoopDetection::is_cyclic(const string &node, unordered_set<string> &visited, unordered_set<string> &rec_stack) {
 	if (rec_stack.find(node) != rec_stack.end())
 		return true; // Cycle/Loop detected
 

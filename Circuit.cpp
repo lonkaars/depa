@@ -5,7 +5,6 @@
 #include "NodeFactory.h"
 
 #include "NodeOutputVisitor.h"
-#include "prut.h"
 
 using std::format;
 
@@ -26,8 +25,6 @@ void Circuit::new_node(string label, string type) {
 		throw CircuitException("unknown type \"%s\"", type.c_str());
 
 	nodes[label] = node;
-
-	prutprintf("[%s] (%s)", label.c_str(), type.c_str());
 }
 
 void Circuit::new_net(string src, vector<string> dests) {
@@ -44,7 +41,6 @@ void Circuit::new_net(string src, vector<string> dests) {
 		if (node == nullptr)
 			throw CircuitException("unknown destination node \"%s\"", dest.c_str());
 		node->addInput(net);
-		prutprintf("%s -> %s", src.c_str(), dest.c_str());
 	}
 }
 
@@ -74,7 +70,7 @@ string Circuit::result() {
 		n.second->accept(visitor);
 		if (!visitor.output_node) continue;
 
-		output += std::format("{}: {}\n", n.first, std::to_string(visitor.level));
+		output += format("{}: {}\n", n.first, std::to_string(visitor.level));
 	}
 
 	return output;

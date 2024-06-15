@@ -1,8 +1,8 @@
-#include "Exception.h"
-
 #include <cstdarg>
 #include <cstdio>
 #include <cstdlib>
+
+#include "Exception.h"
 
 Exception::~Exception() {
 	if (error != NULL)
@@ -43,3 +43,4 @@ ParserException::ParserException(const char * fmt, ...) {
 	va_format(args, fmt);
 	va_end(args);
 }
+

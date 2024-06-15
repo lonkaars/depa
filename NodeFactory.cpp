@@ -1,6 +1,4 @@
 #include <cassert>
-#include <locale>
-#include <ranges>
 #include <algorithm>
 
 #include "NodeFactory.h"
@@ -26,7 +24,6 @@ void NodeFactory::assign(const char * _type, const Node * node) {
 	// ensure there is only one class that registers a type
 	assert(!has_type(type));
 
-	// printf("map[\"%s\"] = %p\n", type.c_str(), node);
 	map[type] = node;
 }
 

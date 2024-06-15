@@ -3,18 +3,19 @@
 GateXor GateXor::instance(GateXor::type);
 
 SignalLevel GateXor::level() {
-	int highCount = 0;
+	bool on = false;
 	for (int i = 0; i < this->inputs.size(); i++) {
 		SignalLevel l = this->inputs[i]->getLevel();
 
 		if (l == UNDEFINED) return UNDEFINED;
-		if (l == HIGH) highCount++;
+		if (l == HIGH) on = !on;
 	}
-	return (highCount % 2 == 1) ? HIGH : LOW;
+	return on ? HIGH : LOW;
 }
 
-GateXor::GateXor(const GateXor *prototype) : Node() {}
+GateXor::GateXor(const GateXor * prototype) : Node() {}
 
-GateXor *GateXor::clone() const {
+GateXor * GateXor::clone() const {
 	return new GateXor(this);
 }
+

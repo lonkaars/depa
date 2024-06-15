@@ -1,5 +1,4 @@
 #include "NodeInput.h"
-#include "prut.h"
 
 NodeInputLow NodeInputLow::instance(NodeInputLow::type);
 NodeInputHigh NodeInputHigh::instance(NodeInputHigh::type);

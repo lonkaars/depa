@@ -18,3 +18,4 @@ GateOr::GateOr(const GateOr * prototype) : Node() { }
 GateOr * GateOr::clone() const {
 	return new GateOr(this);
 }
+

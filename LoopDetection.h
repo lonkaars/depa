@@ -5,17 +5,22 @@
 #include <unordered_set>
 #include <unordered_map>
 
+using std::string;
+using std::vector;
+using std::unordered_map;
+using std::unordered_set;
+
 class LoopDetection {
 public:
 	LoopDetection() = default;
 	virtual ~LoopDetection();
 
 	//! Add connection and throws CircuitError if it creates a loop
-	virtual void add_connection(const std::string &src, const std::vector<std::string> &dests);
+	virtual void add_connection(const string &src, const vector<string> &dests);
 
 private:
-	std::unordered_map<std::string, std::vector<std::string>> adj_list;
+	unordered_map<string, vector<string>> adj_list;
 
-	virtual bool detect_cycle(const std::string &start);
-	virtual bool is_cyclic(const std::string &node, std::unordered_set<std::string> &visited, std::unordered_set<std::string> &rec_stack);
+	virtual bool detect_cycle(const string &start);
+	virtual bool is_cyclic(const string &node, unordered_set<string> &visited, unordered_set<string> &rec_stack);
 };

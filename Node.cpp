@@ -1,11 +1,7 @@
-#include <iostream>
-
 #include "Node.h"
 #include "NodeFactory.h"
 #include "Net.h"
 #include "Exception.h"
-
-#include "prut.h"
 
 Node::Node(const char * type) {
 	NodeFactory::assign(type, this);
@@ -17,19 +13,18 @@ void Node::addInput(Net * net) {
 }
 
 void Node::setOutput(Net * net){
-	if (this->output == nullptr) {
-		this->output = net;
-	} else {
-		throw CircuitException("Net already assigned");
-	}
+	if (this->output != nullptr)
+		throw CircuitException("net already assigned");
+
+	this->output = net;
 }
 
 void Node::sim() {
 	size_t input_size = this->inputs.size();
 	if (this->min_inputs >= 0 && input_size < min_inputs)
-		throw CircuitException("Too few inputs");
+		throw CircuitException("too few inputs");
 	if (this->max_inputs >= 0 && input_size > max_inputs)
-		throw CircuitException("Too many inputs");
+		throw CircuitException("too many inputs");
 	
 	// NodeOutput does not have an output itself
 	if (this->output == nullptr) return;

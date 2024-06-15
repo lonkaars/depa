@@ -7,16 +7,19 @@ public:
 	NodeOutput();
 	NodeOutput(const NodeOutput * prototype);
 	~NodeOutput() = default;
+
 	virtual void sim();
 	virtual SignalLevel level();
 	virtual NodeOutput * clone() const;
 	virtual void setOutput(Net *);
 
+
 private:
-	virtual void init();
-	NodeOutput(const char * type);
+	using Node::Node;
 	constexpr static const char * type = "probe";
 	static NodeOutput instance;
+
+private:
 	SignalLevel input;
 
 public:

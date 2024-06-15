@@ -11,8 +11,6 @@ public:
 protected:
 	SignalLevel level();
 
-	int min_inputs = 0;
-	int max_inputs = -1;
 	using Node::Node;
 
 private:

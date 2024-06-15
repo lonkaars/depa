@@ -9,8 +9,12 @@ SignalLevel GateNot::level() {
 	return UNDEFINED;
 }
 
-GateNot::GateNot(const GateNot * prototype) : Node() { }
+GateNot::GateNot(const GateNot * prototype) : Node() {
+	this->min_inputs = 1;
+	this->max_inputs = 1;
+}
 
 GateNot * GateNot::clone() const {
 	return new GateNot(this);
 }
+

@@ -16,9 +16,5 @@ private:
 	using Node::Node;
 	constexpr static const char * type = "or";
 	static GateOr instance;
-
-private:
-	int min_inputs = 0;
-	int max_inputs = -1;
 };
 

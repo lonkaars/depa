@@ -15,8 +15,4 @@ private:
 	using Node::Node;
 	constexpr static const char * type = "xor";
 	static GateXor instance;
-
-private:
-	int min_inputs = 1;
-	int max_inputs = -1;
 };

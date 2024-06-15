@@ -33,8 +33,8 @@ protected:
 	Net * output = nullptr;
 
 protected:
-	int min_inputs = -1;
-	int max_inputs = -1;
+	int min_inputs = 1;
+	int max_inputs = -1; // unlimited
 
 public:
 	virtual void accept(NodeVisitor & visitor) { visitor.visit(*this); }

@@ -10,6 +10,7 @@ public:
 	LoopDetection() = default;
 	virtual ~LoopDetection();
 
+	//! Add connection and throws CircuitError if it creates a loop
 	virtual void add_connection(const std::string &src, const std::vector<std::string> &dests);
 
 private:

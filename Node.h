@@ -21,7 +21,9 @@ public:
 	void update();
 	virtual void addInput(Net *);
 	virtual void setOutput(Net *);
+	//! validate and simulate
 	virtual void sim();
+	//! logical implementation of the node/gate
 	virtual SignalLevel level() = 0;
 
 protected:

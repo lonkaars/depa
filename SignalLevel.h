@@ -2,6 +2,7 @@
 
 #include <string>
 
+//! Enum for signal values
 enum SignalLevel {
 	LOW,
 	HIGH,
@@ -9,6 +10,7 @@ enum SignalLevel {
 };
 
 namespace std {
+	//! convert enum to string
 	std::string to_string(SignalLevel level);
 }
 

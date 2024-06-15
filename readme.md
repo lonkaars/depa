@@ -19,7 +19,7 @@ make
 
 Functions:
 
-- [ ] loop detection (JOSHUA)
+- [x] loop detection (JOSHUA)
 - [x] final output format (LOEK)
 
 Schoonheid:
@@ -28,7 +28,7 @@ Schoonheid:
   niet, moet in een constructor o.i.d. gedaan worden)
 - [ ] is de scope (public/private/protected) van alle members lekker
   consistent?
-- [ ] stomme doxygen (`//! <korte beschrijving>` boven functies/variabelen,
+- [x] stomme doxygen (`//! <korte beschrijving>` boven functies/variabelen,
   `//!< wat doet dit` bij enum constantes)
 
 Classes:
@@ -38,12 +38,12 @@ Classes:
 - [x] class GateAnd
 - [x] class GateNand
 - [X] class GateNor
-- [ ] class GateNot
+- [x] class GateNot
 - [x] class GateOr
-- [ ] class GateXor
+- [x] class GateXor
 - [x] class Net
-- [ ] class NodeInput
-- [ ] class NodeOutput
+- [x] class NodeInput
+- [x] class NodeOutput
 - [x] class Parser
 - [x] class Subject
 - [x] enum SignalLevel

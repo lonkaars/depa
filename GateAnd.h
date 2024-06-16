@@ -7,10 +7,10 @@ class GateAnd : public Node {
 
 public:
 	GateAnd() = default;
-	~GateAnd() = default;
+	virtual ~GateAnd() = default;
 	virtual GateAnd * clone() const;
 
-protected:
+public:
 	SignalLevel level();
 
 private:

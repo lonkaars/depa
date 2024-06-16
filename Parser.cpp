@@ -2,6 +2,7 @@
 #include <sstream>
 
 #include "Parser.h"
+#include "Exception.h"
 
 using std::getline;
 

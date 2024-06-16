@@ -3,15 +3,18 @@
 #include "Node.h"
 
 class GateNot : public Node {
+	using Node::Node;
+
 public:
 	GateNot();
-	GateNot(const GateNot * prototype);
 	virtual ~GateNot() = default;
 	virtual GateNot * clone() const;
+
+public:
 	SignalLevel level();
 
 private:
-	using Node::Node;
+	GateNot(const GateNot * prototype);
 	constexpr static const char * type = "not";
 	static GateNot instance;
 };

@@ -3,17 +3,18 @@
 #include "Node.h"
 
 class GateOr : public Node {
+	using Node::Node;
+
 public:
 	GateOr() = default;
-	GateOr(const GateOr * prototype);
-	~GateOr() = default;
+	virtual ~GateOr() = default;
 	virtual GateOr * clone() const;
 
-protected:
+public:
 	SignalLevel level();
 
 private:
-	using Node::Node;
+	GateOr(const GateOr * prototype);
 	constexpr static const char * type = "or";
 	static GateOr instance;
 };

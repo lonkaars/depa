@@ -1,19 +1,18 @@
 #pragma once
 
-// #include "Node.h"
 #include "GateOr.h"
 
 class GateNor : public GateOr {
+	using GateOr::GateOr;
+
 public:
 	virtual GateNor * clone() const;
 
-protected:
+public:
 	SignalLevel level();
-	using GateOr::GateOr;
 
 private:
 	GateNor(const GateNor *) : GateOr() {}
-	// GateNor(const char * type);
 	constexpr static const char * type = "nor";
 	static GateNor instance;
 };

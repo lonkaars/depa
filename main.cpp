@@ -4,6 +4,7 @@
 
 #include "Parser.h"
 #include "Circuit.h"
+#include "Exception.h"
 
 using std::cout;
 using std::endl;

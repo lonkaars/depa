@@ -23,6 +23,8 @@ public:
 	virtual void setOutput(Net *);
 	//! validate and simulate
 	virtual void sim();
+
+public:
 	//! logical implementation of the node/gate
 	virtual SignalLevel level() = 0;
 

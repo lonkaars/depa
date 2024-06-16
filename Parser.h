@@ -5,12 +5,9 @@
 
 
 #include "Circuit.h"
-#include "Exception.h"
 
 using std::istream;
 using std::string;
-
-
 
 class Parser {
 public:

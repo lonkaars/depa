@@ -3,23 +3,23 @@
 #include "Node.h"
 
 class NodeInput : public Node {
+	using Node::Node;
+
 public:
 	NodeInput();
 	~NodeInput() = default;
 
 	virtual void addInput(Net *);
-
-protected:
-	using Node::Node;
 };
 
 class NodeInputLow : public NodeInput {
+	using NodeInput::NodeInput;
+
 public:
 	virtual NodeInputLow * clone() const;
 
-protected:
+public:
 	SignalLevel level();
-	using NodeInput::NodeInput;
 
 private:
 	NodeInputLow(const NodeInputLow *) : NodeInput() {}
@@ -28,12 +28,13 @@ private:
 };
 
 class NodeInputHigh : public NodeInput {
+	using NodeInput::NodeInput;
+
 public:
 	virtual NodeInputHigh * clone() const;
 
 protected:
 	SignalLevel level();
-	using NodeInput::NodeInput;
 
 private:
 	NodeInputHigh(const NodeInputHigh *) : NodeInput() {}

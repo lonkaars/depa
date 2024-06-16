@@ -5,97 +5,81 @@ skinparam linetype ortho
 skinparam classAttributeIconSize 0
 
 class main {
-	+main(int argc, char** argv) : int
-	+open_input(int argc, char** argv) : istream*
+	main(int argc, char** argv) : int
+	open_input(int argc, char** argv) : istream*
 }
 hide main circle
 
 class Node { /' (also ConcreteObserver) '/
-	+Node()
+	Node()
 	#Node(const char* type)
-	+~Node()
 	#output : Net*
-	+{abstract} clone() : Node*
-	+{abstract} level() : SignalLevel
+	{abstract} clone() : Node*
+	{abstract} level() : SignalLevel
 	#max_inputs : int
 	#min_inputs : int
 	#inputs : vector<Net*>
-	+accept(NodeVisitor& visitor) : void
-	+addInput(Net*) : void
-	+setOutput(Net*) : void
-	+sim() : void
-	+update() : void
+	accept(NodeVisitor& visitor) : void
+	addInput(Net*) : void
+	setOutput(Net*) : void
+	sim() : void
+	update() : void
 }
 
 class Net { /' (also ConcreteSubject) '/
-	+Net()
-	+~Net()
-	-level : SignalLevel
-	+getLevel() : SignalLevel
-	+setLevel(SignalLevel) : void
+	Net()
+	getLevel() : SignalLevel
+	setLevel(SignalLevel) : void
 }
 
 class Subject {
-	+size() : int
-	-observers : std::vector<Observer*>
-	+attach(Observer* obs) : void
-	+detach(Observer*) : void
-	+notify() : void
+	size() : int
+	attach(Observer* obs) : void
+	detach(Observer*) : void
+	notify() : void
 }
 
 interface Observer {
-	+{abstract} update() : void
+	{abstract} update() : void
 }
 
 class GateAnd {
-	-GateAnd(const GateAnd* prototype)
-	+GateAnd()
-	+~GateAnd()
-	+clone() : GateAnd*
+	GateAnd()
+	clone() : GateAnd*
 	#level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static GateAnd
 }
 
 class GateNand {
-	-level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static GateNand
+	clone() : GateNand*
+	#level() : SignalLevel
 }
 
 class GateNor {
-	-level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static GateNor
+	clone() : GateNor*
+	#level() : SignalLevel
 }
 
 class GateNot {
-	+GateNot()
-	+GateNot(const GateNot* prototype)
-	+~GateNot()
-	+clone() : GateNot*
-	-level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static GateNot
+	GateNot()
+	GateNot(const GateNot* prototype)
+	clone() : GateNot*
 }
 
 class GateOr {
-	+GateOr()
-	+GateOr(const GateOr* prototype)
-	+~GateOr()
-	+clone() : GateOr*
+	GateOr()
+	GateOr(const GateOr* prototype)
+	clone() : GateOr*
 	#level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static GateOr
 }
 
 class GateXor {
-
+	GateXor()
+	GateXor(const GateXor* prototype)
+	clone() : GateXor*
 }
 
 class NodeInput {
-	+NodeInput()
-	+~NodeInput()
+	NodeInput()
 }
 
 
@@ -106,104 +90,87 @@ enum SignalLevel {
 }
 
 class NodeInputLow {
-	-NodeInputLow(const NodeInputLow*)
-	+clone() : NodeInputLow*
+	clone() : NodeInputLow*
 	#level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static NodeInputLow
 }
 
 class NodeInputHigh {
-	-NodeInputHigh(const NodeInputHigh*)
-	+clone() : NodeInputHigh*
+	clone() : NodeInputHigh*
 	#level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static NodeInputHigh
 }
 
 class NodeOutput {
-	-NodeOutput(const char* type)
-	+NodeOutput()
-	+NodeOutput(const NodeOutput* prototype)
-	+~NodeOutput()
-	+clone() : NodeOutput*
-	-input : SignalLevel
-	+level() : SignalLevel
-	-{static} type : constexpr static const char*
-	-{static} instance : static NodeOutput
-	+accept(NodeVisitor& visitor) : void
-	-init() : void
-	+setOutput(Net*) : void
-	+sim() : void
+	NodeOutput()
+	NodeOutput(const NodeOutput* prototype)
+	clone() : NodeOutput*
+	level() : SignalLevel
+	accept(NodeVisitor& visitor) : void
+	setOutput(Net*) : void
+	sim() : void
 }
 
 class NodeOutputVisitor {
-	+NodeOutputVisitor()
-	+~NodeOutputVisitor()
-	+level : SignalLevel
-	+output_node : bool
-	+visit(Node& node) : void
-	+visit(NodeOutput& node) : void
+	NodeOutputVisitor()
+	level : SignalLevel
+	output_node : bool
+	visit(Node& node) : void
+	visit(NodeOutput& node) : void
 }
 
 interface NodeVisitor {
-	+{abstract} visit(NodeOutput& node) : void
-	+{abstract} visit(Node& node) : void
+	{abstract} visit(NodeOutput& node) : void
+	{abstract} visit(Node& node) : void
 }
 
 exception Exception {
-	+Exception(const char* fmt, ...)
+	Exception(const char* fmt, ...)
 	#Exception()
-	+~Exception()
 	#error : char*
-	+what() : char*
+	what() : char*
 	#va_format(va_list args, const char* fmt) : void
 }
 
 exception CircuitException {
-	+CircuitException(const char* fmt, ...)
+	CircuitException(const char* fmt, ...)
+	node : Node*
 }
 
 exception ParserException {
-	+ParserException(const char* fmt, ...)
+	ParserException(const char* fmt, ...)
+}
+
+class NodeException {
+	NodeException(Node* node, const char* fmt)
 }
 
 class Parser {
-	+Parser()
-	+Parser(Circuit& circuit)
-	+~Parser()
-	-circuit : Circuit*
-	-operator<<(Parser& parser, istream s) : istream&
-	-operator>>(istream s, Parser& parser) : istream&
-	+{static} filter(char* input) : size_t
-	+parse(string input) : void
-	+parse(istream input) : void
-	+set_circuit(Circuit& circuit) : void
+	Parser()
+	Parser(Circuit& circuit)
+	{static} filter(char* input) : size_t
+	parse(string input) : void
+	parse(istream input) : void
+	set_circuit(Circuit& circuit) : void
 }
 
 class NodeFactory {
-	+NodeFactory()
-	+~NodeFactory()
-	+{static} create(string type) : Node*
-	-{static} find_type(string type) : Node*
-	-{static} get_map() : NodeFactoryMap&
-	+{static} has_type(const char* type) : bool
-	+{static} has_type(string type) : bool
-	-{static} normalize_type(string type) : string
-	-{static} assign(const char* type, const Node* node) : void
+	NodeFactory()
+	{static} create(string type) : Node*
+	{static} has_type(const char* type) : bool
+	{static} has_type(string type) : bool
 }
 
 class Circuit {
-	+Circuit()
-	+~Circuit()
-	-find_node(string label) : Node*
-	-nodes : std::map<string, Node*>
-	+result() : string
-	-nets : vector<Net*>
-	+create(string label, vector<string> nodes) : void
-	+new_net(string src, vector<string> dests) : void
-	+new_node(string label, string type) : void
-	+sim() : void
+	Circuit()
+	result() : string
+	create(string label, vector<string> nodes) : void
+	new_net(string src, vector<string> dests) : void
+	new_node(string label, string type) : void
+	sim() : void
+}
+
+class LoopDetection {
+	LoopDetection()
+	add_connection(string src, const vector<string>& dests) : void
 }
 
 main --* Parser
@@ -211,9 +178,10 @@ main --* Circuit
 main -- CircuitException
 main -- ParserException
 NodeOutputVisitor --|> NodeVisitor
-NodeVisitor <- Node
-NodeVisitor <- NodeOutput
-NodeOutputVisitor <-left Circuit
+NodeVisitor <-[dashed] Node
+NodeVisitor <-[dashed] NodeOutput
+NodeOutputVisitor <--up Circuit
+LoopDetection <-- Circuit
 Net -- SignalLevel
 Node -- SignalLevel
 GateAnd <|-- GateNand
@@ -226,15 +194,17 @@ Node <|--- NodeOutput
 Node <|--- NodeInput
 NodeInput <|-- NodeInputLow
 NodeInput <|-- NodeInputHigh
-Subject <|-- Net
-Observer <|-[dashed]- Node
-Node -> "owner" Net
-Observer "*" - Subject
+Subject <|--down Net
+Observer <|-[dashed]down-Node
+Observer -right Subject
+Node -right> Net
 Exception <|-- CircuitException
 Exception <|-- ParserException
+CircuitException <|-- NodeException
 Parser -[dashed]> Circuit
 ParserException - Parser
 CircuitException -left Circuit
+NodeException -left- Node
 NodeFactory -[dashed]> Node
 NodeFactory <-[dashed]- Node
 Circuit ---> Net

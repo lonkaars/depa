@@ -2,7 +2,7 @@
 
 GateNand GateNand::instance(GateNand::type);
 
-// GateNand::GateNand(const char * type) : GateAnd(type) { }
+GateNand::GateNand(const char * type) : GateAnd(type) { }
 
 SignalLevel GateNand::level() {
 	SignalLevel lvl = GateAnd::level();

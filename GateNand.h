@@ -4,11 +4,13 @@
 #include "GateAnd.h"
 
 class GateNand : public GateAnd {
-private:
+	using GateAnd::GateAnd;
+
+protected:
 	SignalLevel level();
 
-	// GateNand(const char * type);
-	using GateAnd::GateAnd;
+private:
+	GateNand(const char * type);
 	constexpr static const char * type = "nand";
 	static GateNand instance;
 };

@@ -3,6 +3,8 @@
 #include "Node.h"
 
 class GateAnd : public Node {
+	using Node::Node;
+
 public:
 	GateAnd() = default;
 	~GateAnd() = default;
@@ -10,8 +12,6 @@ public:
 
 protected:
 	SignalLevel level();
-
-	using Node::Node;
 
 private:
 	GateAnd(const GateAnd * prototype);

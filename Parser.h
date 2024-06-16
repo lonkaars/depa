@@ -15,7 +15,9 @@ public:
 	Parser(Circuit & circuit);
 	virtual ~Parser() = default;
 
+	//! parse from std::string
 	void parse(string input);
+	//! parse from std::istream
 	void parse(istream & input);
 
 	/**
@@ -25,6 +27,7 @@ public:
 	 */
 	static size_t filter(char * input);
 
+	//! inject Circuit instance
 	void set_circuit(Circuit & circuit);
 
 private:

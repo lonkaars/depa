@@ -11,6 +11,7 @@ public:
 	virtual NodeOutput * clone() const;
 
 	virtual void sim();
+	//! override: throw exception
 	virtual void setOutput(Net *);
 
 public:

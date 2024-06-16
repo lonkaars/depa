@@ -9,6 +9,7 @@ public:
 	NodeInput();
 	~NodeInput() = default;
 
+	//! override: throw exception
 	virtual void addInput(Net *);
 };
 

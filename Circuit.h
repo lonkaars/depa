@@ -18,16 +18,18 @@ public:
 	virtual ~Circuit();
 
 public:
-	//! Auto-magically creates either a new node or net
+	//! create a new node or net
 	virtual void create(string label, vector<string> nodes);
-	//! Create new node (internal function)
-	virtual void new_node(string label, string type);
-	//! Create new net (internal function)
-	virtual void new_net(string src, vector<string> dests);
-	//! Simulate the circuit
+	//! simulate the circuit
 	virtual void sim();
-	//! Get simulation results (probe measure values)
+	//! get simulation results as formatted string (probe measure values)
 	virtual string result();
+
+private:
+	//! specifically create new node
+	virtual void new_node(string label, string type);
+	//! specifically create a new net
+	virtual void new_net(string src, vector<string> dests);
 
 private:
 	std::map<string, Node *> nodes = {};

@@ -19,13 +19,15 @@ public:
 public:
 	//! alias to \p sim() for Observer
 	void update();
+	//! add input to node
 	virtual void addInput(Net *);
+	//! set output net
 	virtual void setOutput(Net *);
-	//! validate and simulate
+	//! simulate node behavior (calculate new level and notify outputs)
 	virtual void sim();
 
 public:
-	//! logical implementation of the node/gate
+	//! calculate the new logic level
 	virtual SignalLevel level() = 0;
 
 protected:

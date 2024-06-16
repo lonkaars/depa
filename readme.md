@@ -13,9 +13,3 @@ make
 - Dependency injection
 - vast meer!
 
-## TODO
-
-- is de scope (public/private/protected) van alle members lekker
-  consistent?
-- klassendiagram
-

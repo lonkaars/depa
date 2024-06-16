@@ -44,38 +44,33 @@ interface Observer {
 }
 
 class GateAnd {
-	GateAnd()
 	clone() : GateAnd*
-	#level() : SignalLevel
+	level() : SignalLevel
 }
 
 class GateNand {
 	clone() : GateNand*
-	#level() : SignalLevel
+	level() : SignalLevel
 }
 
 class GateNor {
 	clone() : GateNor*
-	#level() : SignalLevel
+	level() : SignalLevel
 }
 
 class GateNot {
-	GateNot()
-	GateNot(const GateNot* prototype)
 	clone() : GateNot*
+	level() : SignalLevel
 }
 
 class GateOr {
-	GateOr()
-	GateOr(const GateOr* prototype)
 	clone() : GateOr*
-	#level() : SignalLevel
+	level() : SignalLevel
 }
 
 class GateXor {
-	GateXor()
-	GateXor(const GateXor* prototype)
 	clone() : GateXor*
+	level() : SignalLevel
 }
 
 class NodeInput {
@@ -91,17 +86,16 @@ enum SignalLevel {
 
 class NodeInputLow {
 	clone() : NodeInputLow*
-	#level() : SignalLevel
+	level() : SignalLevel
 }
 
 class NodeInputHigh {
 	clone() : NodeInputHigh*
-	#level() : SignalLevel
+	level() : SignalLevel
 }
 
 class NodeOutput {
 	NodeOutput()
-	NodeOutput(const NodeOutput* prototype)
 	clone() : NodeOutput*
 	level() : SignalLevel
 	accept(NodeVisitor& visitor) : void

@@ -13,7 +13,7 @@ SignalLevel GateNor::level() {
 
 // GateNor::GateNor(const GateNor * prototype) : Node() { }
 
-// GateNor * GateNor::clone() const {
-// 	return new GateNor(this);
-// }
+GateNor * GateNor::clone() const {
+	return new GateNor(this);
+}
 

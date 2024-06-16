@@ -2,7 +2,7 @@
 
 GateNand GateNand::instance(GateNand::type);
 
-GateNand::GateNand(const char * type) : GateAnd(type) { }
+// GateNand::GateNand(const char * type) : GateAnd(type) { }
 
 SignalLevel GateNand::level() {
 	SignalLevel lvl = GateAnd::level();
@@ -13,7 +13,7 @@ SignalLevel GateNand::level() {
 
 // GateNand::GateNand(const GateNand * prototype) : GateAnd() { }
 
-// GateNand * GateNand::clone() const {
-// 	return new GateNand(this);
-// }
+GateNand * GateNand::clone() const {
+	return new GateNand(this);
+}
 

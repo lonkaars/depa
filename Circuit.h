@@ -33,7 +33,7 @@ private:
 	std::map<string, Node *> nodes = {};
 	vector<Net *> nets = {};
 
-	LoopDetection * ld = new LoopDetection();
+	LoopDetection loops = LoopDetection();
 
 	virtual Node * find_node(string label);
 };

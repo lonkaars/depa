@@ -43,4 +43,10 @@ ParserException::ParserException(const char * fmt, ...) {
 	va_format(args, fmt);
 	va_end(args);
 }
-
+NodeException::NodeException(Node * node, const char * fmt, ...) {
+	this->node = node;
+	va_list args;
+	va_start(args, fmt);
+	va_format(args, fmt);
+	va_end(args);
+}

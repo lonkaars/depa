@@ -1,11 +1,15 @@
 #include "NodeInput.h"
+#include "Exception.h"
 
 NodeInputLow NodeInputLow::instance(NodeInputLow::type);
 NodeInputHigh NodeInputHigh::instance(NodeInputHigh::type);
 
-NodeInput::NodeInput() {
-	this->min_inputs = -1;
+NodeInput::NodeInput() : Node() {
+	this->min_inputs = 0;
 	this->max_inputs = 0;
+}
+void NodeInput::addInput(Net *) {
+	throw NodeException(this, "NodeInput cannot have inputs");
 }
 
 NodeInputLow * NodeInputLow::clone() const {

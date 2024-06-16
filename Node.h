@@ -33,7 +33,7 @@ protected:
 	Net * output = nullptr;
 
 protected:
-	int min_inputs = 1;
+	int min_inputs = 2; // at least 2 inputs for most gates
 	int max_inputs = -1; // unlimited
 
 public:

@@ -13,7 +13,7 @@ void Circuit::create(string label, vector<string> nodes) {
 		return new_node(label, nodes[0]);
 
 	new_net(label, nodes);
-	ld->add_connection(label, nodes);
+	loops.add_connection(label, nodes);
 }
 
 void Circuit::new_node(string label, string type) {
@@ -45,8 +45,21 @@ void Circuit::new_net(string src, vector<string> dests) {
 }
 
 void Circuit::sim() {
-	for (auto & node : nodes)
-		node.second->sim();
+	for (auto & pair : nodes) {
+		try {
+			Node * node = pair.second;
+			node->sim();
+		} catch (CircuitException & e) {
+			const char * label = "???";
+			Node * node = e.node;
+			if (node != nullptr) {
+				auto it = std::find_if(nodes.begin(), nodes.end(),
+					[node](auto && n) { return n.second == node; });
+				if (it != nodes.end()) label = it->first.c_str();
+			}
+			throw CircuitException("node %s: %s", label, e.what());
+		}
+	}
 }
 
 Node * Circuit::find_node(string label) {

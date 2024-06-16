@@ -7,6 +7,8 @@ public:
 	NodeInput();
 	~NodeInput() = default;
 
+	virtual void addInput(Net *);
+
 protected:
 	using Node::Node;
 };

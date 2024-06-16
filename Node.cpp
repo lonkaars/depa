@@ -14,7 +14,7 @@ void Node::addInput(Net * net) {
 
 void Node::setOutput(Net * net){
 	if (this->output != nullptr)
-		throw CircuitException("net already assigned");
+		throw NodeException(this, "net already assigned");
 
 	this->output = net;
 }
@@ -22,11 +22,11 @@ void Node::setOutput(Net * net){
 void Node::sim() {
 	size_t input_size = this->inputs.size();
 	if (this->min_inputs >= 0 && input_size < min_inputs)
-		throw CircuitException("too few inputs");
+		throw NodeException(this, "too few inputs (expected >= %d, got %d)", min_inputs, input_size);
 	if (this->max_inputs >= 0 && input_size > max_inputs)
-		throw CircuitException("too many inputs");
+		throw NodeException(this, "too many inputs (expected <= %d, got %d)", max_inputs, input_size);
 	
-	// NodeOutput does not have an output itself
+	// output may be unconnected
 	if (this->output == nullptr) return;
 
 	SignalLevel new_out = this->level();

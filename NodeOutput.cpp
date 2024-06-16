@@ -18,7 +18,7 @@ NodeOutput * NodeOutput::clone() const {
 }
 
 void NodeOutput::setOutput(Net *) {
-	throw CircuitException("NodeOutput cannot have an output");
+	throw NodeException(this, "NodeOutput cannot have an output");
 }
 
 SignalLevel NodeOutput::level() {
